@@ -13,7 +13,7 @@ Athletes improve through consistency, recovery, and continual challenges provide
 ## API
 
 Table 1:
-1. excersie name
+1. exersie name
 2. duration
 3. date
 4. notes
@@ -60,9 +60,10 @@ Table 2:
 3. More fields > average heart rate, calories burned
 4. user login 
 5. create workout templates
+6. Workout graphs
 
 #### Component Libraries
-Considering use FontAwesome's Icon Library
+Considering use of [FontAwesome's Icon Library](https://www.npmjs.com/package/@fortawesome/react-fontawesome)
 
 ## SWOT Analysis
 
