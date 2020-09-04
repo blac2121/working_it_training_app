@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-
 import axios from "axios";
 
 import CreateEntry from "./components/CreateEntry";
@@ -29,7 +28,25 @@ function App() {
       <header>
         <Link to="/" className="site-header"><h1>Working It</h1></Link>
       </header>
-      
+      <main>
+        <Switch>
+          <Route exact path="/">
+            <div className="home-container">
+              <h2 className="home-header">Workouts</h2>
+              <Link to="/add"className="add-entry-button">Add</Link>
+              <div className="home-entry-container">
+                {workouts.map((workout, index) => (
+                  <div className="home-entries">
+                    <Link to={`/workout/${workout.exercise}`} > 
+                      <h3 key={index}>{workout.excercise}</h3>  
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Route>
+        </Switch>
+      </main>
       <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
     </div>
   );
