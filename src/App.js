@@ -49,13 +49,6 @@ function App() {
           </Route>
           <Route path="/exercise/:id">
             <ViewEntry workouts={workouts} />
-            {/* {workouts.map((entry) => (
-              <ViewEntry
-                entry={entry}
-                key={entry.id}
-              />))
-            } */}
-            {/* <ViewEntry workouts={workouts} fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} /> */}
           </Route>
         </Switch>
       </main>
