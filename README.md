@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Title
+Working It: Manage your training
 
-## Available Scripts
+## Description
+Athletes improve through consistency, recovery, and continual challenges provided through their training protocol.  Working It provides a resource for athletes to not only log the important data about their workouts such as date, duration, and workout type, but also the ability to indicate whether the workout was sufficiently challenging, too hard, or not hard enough in order to seize the perfect time to adjust their training protocol to optimize their training.   
 
-In the project directory, you can run:
+## Wireframes
+[Mock Ups](https://jmp.sh/3NEK4h2)
 
-### `npm start`
+## Component Heirarchy
+ [Component Tree](https://jmp.sh/izsC7pk)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Table 1:
+1. excersie name
+2. duration
+3. date
+4. notes
+5. user
+6. workout rating
 
-### `npm test`
+Table 2:
+1. user
+2. username
+3. password
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```JSON
+{
+    "records": [
+        {
+            "id": "recSg88UCr1ELUseL",
+            "fields": {
+                "date": "2020-08-30",
+                "userID": 101515,
+                "notes": "Great ride got a sprint jersey",
+                "rating": "still good",
+                "duration": 2791,
+                "exercise": "Cycling",
+                "created_at": "2020-09-03T14:07:12.000Z"
+            },
+            "createdTime": "2020-09-03T14:07:12.000Z"
+        }
+    ],
+    "offset": "recSg88UCr1ELUseL"
+}
+```
 
-### `npm run build`
+## MVP
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Home page: Blank State
+2. Home page: List Workouts > workout, date, duration, review
+3. View workout > workout, date, duration, review, notes
+4. Add workout 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Post-MVP
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Edit workout
+2. Delete workout
+3. More fields > average heart rate, calories burned
+4. user login 
+5. create workout templates
 
-### `npm run eject`
+#### Component Libraries
+Considering use FontAwesome's Icon Library
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## SWOT Analysis
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Strengths:
+Once I have a plan I can be very driven and methodical in executing the plan. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Weaknesses: 
+I get hung up on the feature doing enough to be something I would consider done which can make me feel burned out. I will need to come up with goals about what this project does which is showcase working react.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Opportunities:
+Appreciate what I can do and not be obsessed with the project being more. 
 
-## Learn More
+Threats:
+Being obsessed with users only seeing their own data and that taking from fucntionality. I will need to time box a possible solution but be prepared to abandon the idea if need be.  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
