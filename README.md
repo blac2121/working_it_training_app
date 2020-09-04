@@ -14,8 +14,8 @@ Athletes improve through consistency, recovery, and continual challenges provide
 
 Table 1:
 1. exersie name
-2. duration
-3. date
+2. date
+3. duration
 4. notes
 5. user
 6. workout rating
