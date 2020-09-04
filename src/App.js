@@ -37,21 +37,19 @@ function App() {
               <div className="home-entry-container">
                 {workouts.map((entry) => (
                   <Link to={`/exercise/${entry.fields.exercise}/${entry.id}`} >
-                    <ViewEntry
-                      entry={entry}
-                      key={entry.id}
-                      fetchEntries={fetchEntries}
-                      setFetchEntries={setFetchEntries}
-                    />
+                    <h3 className="home-view" key={entry.id}>{entry.fields.exercise}</h3>
                   </Link>
                 ))
                 }
               </div>
             </div>
           </Route>
-          <Route>
+          <Route path="/add">
             <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
           </Route>
+          {/* <Route path="/exercise/:exercise/:id">
+            <ViewEntry entry={entry} key={entry.id} fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
+          </Route> */}
         </Switch>
       </main>
     </div>
