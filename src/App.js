@@ -47,9 +47,12 @@ function App() {
           <Route path="/add">
             <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
           </Route>
-          {/* <Route path="/exercise/:exercise/:id">
-            <ViewEntry entry={entry} key={entry.id} fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
-          </Route> */}
+          <Route path="/exercise/:exercise/:id">
+            {workouts.map((entry) => (
+              <ViewEntry entry={entry} key={entry.id} />))
+            }
+            {/* <ViewEntry workouts={workouts} fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} /> */}
+          </Route>
         </Switch>
       </main>
     </div>

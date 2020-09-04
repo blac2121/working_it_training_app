@@ -1,9 +1,16 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 // import axios from "axios";
+
+
 // import EditEntry from "./EditEntry"
 
 const Entry = (props) => {
+  // const params = useParams();
   const { exercise } = props.entry.fields;
+  // console.log(params.fields.exercise)
+
+ 
   // const { fetchEntries, setFetchEntries, entry } = props;
 
   // const handleDelete = async () => {
