@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const EditEntry = (props) => {
-  const [date, setDate] = useState(props.review.fields.exercise); 
+  const [exercise, setExercise] = useState(props.entry.fields.exercise);
 
 
   const handleSubmit = async (e) => {
@@ -18,7 +18,7 @@ const EditEntry = (props) => {
       }
     });
     props.setFetchEntries(!props.fetchEntries)
-    setDate("");
+    setExercise("");
   }
 
   return (

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from "axios";
 
+import ViewEntry from "./components/ViewEntry";
 import CreateEntry from "./components/CreateEntry";
-
 import './App.css';
 
 function App() {
@@ -33,15 +33,19 @@ function App() {
           <Route exact path="/">
             <div className="home-container">
               <h2 className="home-header">Workouts</h2>
-              <Link to="/add"className="add-entry-button">Add</Link>
+              <Link to="/add" className="add-entry-button">Add</Link>
               <div className="home-entry-container">
-                {workouts.map((workout, index) => (
-                  <div className="home-entries">
-                    <Link to={`/workout/${workout.exercise}`} > 
-                      <h3 key={index}>{workout.excercise}</h3>  
-                    </Link>
-                  </div>
-                ))}
+                {workouts.map((entry) => (
+                  <Link to={`/exercise/${entry.fields.exercise}/${entry.id}`} >
+                    <ViewEntry
+                      entry={entry}
+                      key={entry.id}
+                      fetchEntries={fetchEntries}
+                      setFetchEntries={setFetchEntries}
+                    />
+                  </Link>
+                ))
+                }
               </div>
             </div>
           </Route>
