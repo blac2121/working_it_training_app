@@ -10,21 +10,16 @@ const CreateEntry = (props) => {
   const [duration, setDuration] = useState("")
 
   const calculateDuration = () => {
-    const hourConversion = hours * 3600
-    const minuteConversion = minutes * 60
-    const totalDuration = (hourConversion + minuteConversion + seconds)
-    setDuration(totalDuration);
-
-    duration = ((hours * 3600) + (minutes * 60) + seconds)
+    setDuration((hours * 3600) + (minutes * 60) + seconds)
   }
 
-  console.log(calculateDuration())
-
   const handleSubmit = async (e) => {
+    calculateDuration();
     e.preventDefault();
     const fields = {
       date,
       exercise,
+      duration
     };
     const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
     await axios.post(airtableURL, { fields }, {
@@ -37,8 +32,6 @@ const CreateEntry = (props) => {
     setDate("");
     setExercise("");
   }
-
-  
 
   return (
     <form onSubmit={handleSubmit}>
