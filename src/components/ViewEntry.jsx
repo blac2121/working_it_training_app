@@ -1,38 +1,17 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-// import axios from "axios";
-
-
-// import EditEntry from "./EditEntry"
 
 const Entry = (props) => {
-  // const params = useParams();
-  const { exercise } = props.entry.fields;
-  // console.log(params.fields.exercise)
+  // const { exercise } = props.workouts.fields;
+  const params = useParams();
+  console.log(params.id)
 
- 
-  // const { fetchEntries, setFetchEntries, entry } = props;
-
-  // const handleDelete = async () => {
-  //   const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/frylife/${entry.id}`;
-  //   await axios.delete(airtableURL, {
-  //     headers: {
-  //       'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
-  //     }
-  //   });
-  //   setFetchEntries(!fetchEntries);
-  // }
-
+  const workout = props.workouts.find((workout) => params.id === workout.id);
+  console.log(workout)
+  
   return (
     <div>
-      <h4>{exercise}</h4>
-      {/* <p>{date}</p> */}
-      {/* <EditEntry
-        fetchEntries={fetchEntries}
-        setFetchEntries={setFetchEntries}
-        entry={entry}
-      /> */}
-      {/* <button onClick={handleDelete}>Delete</button> */}
+      {/* <h4>{exercise}</h4> */}
     </div>
   )
 }
