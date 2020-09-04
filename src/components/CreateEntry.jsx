@@ -9,7 +9,16 @@ const CreateEntry = (props) => {
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState("")
 
-  const duration = (`${hours}:${minutes}:${seconds}`)
+  const calculateDuration = () => {
+    const hourConversion = hours * 3600
+    const minuteConversion = minutes * 60
+    const totalDuration = (hourConversion + minuteConversion + seconds)
+    setDuration(totalDuration);
+
+    duration = ((hours * 3600) + (minutes * 60) + seconds)
+  }
+
+  console.log(calculateDuration())
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +37,8 @@ const CreateEntry = (props) => {
     setDate("");
     setExercise("");
   }
+
+  
 
   return (
     <form onSubmit={handleSubmit}>
