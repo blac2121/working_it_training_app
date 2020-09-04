@@ -49,9 +49,11 @@ function App() {
               </div>
             </div>
           </Route>
+          <Route>
+            <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
+          </Route>
         </Switch>
       </main>
-      <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
     </div>
   );
 }
