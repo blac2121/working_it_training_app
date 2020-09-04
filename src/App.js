@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import CreateEntry from "./components/CreateEntry";
 import './App.css';
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
+  const [fetchEntries, setFetchEntries] = useState(false);
 
   useEffect(() => {
     const getWorkouts = async () => {
@@ -16,11 +18,12 @@ function App() {
       setWorkouts(response.data.records); 
     }
     getWorkouts();
-  }, []);
+  }, [fetchEntries]);
 
   return (
     <div className="App">
       <h1>Working It</h1>
+      <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
     </div>
   );
 }

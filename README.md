@@ -8,12 +8,12 @@ Athletes improve through consistency, recovery, and continual challenges provide
 [Mock Ups](https://jmp.sh/3NEK4h2)
 
 ## Component Heirarchy
- [Component Tree](https://jmp.sh/izsC7pk)
+[Component Tree](https://jmp.sh/izsC7pk)
 
 ## API
 
 Table 1:
-1. exersie name
+1. exercise name
 2. date
 3. duration
 4. notes
