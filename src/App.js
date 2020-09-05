@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from "axios";
 
+import NavBar from "./components/NavBar";
 import ViewEntry from "./components/ViewEntry";
 import CreateEntry from "./components/CreateEntry";
 import './App.css';
@@ -26,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <Link to="/" className="site-header"><h1>Working It</h1></Link>
+        <NavBar />
       </header>
       <main>
         <Switch>

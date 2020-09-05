@@ -16,7 +16,7 @@ main {
 .home-exercise-container {
   display: flex;
   flex-direction: row;
-  background-color: #757576;
+  background-color: #4C4C4D;
   width: 500px;
   height: 150px;
   margin: 30px;
