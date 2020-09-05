@@ -2,28 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const CreateEntry = (props) => {
-  // const [date, setDate] = useState("");
+  const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
-
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [duration, setDuration] = useState(0)
-
+  const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
 
   const calculateDuration = () => {
     setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const fields = {
+      date,
       exercise,
       duration,
-      notes,
+      status,
+      notes
     };
 
     const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
@@ -33,7 +33,7 @@ const CreateEntry = (props) => {
         'Content-Type': 'application/json',
       }
     });
-    
+
     props.setFetchEntries(!props.fetchEntries) 
   }
 
@@ -43,13 +43,13 @@ const CreateEntry = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <label htmlFor="date">Date:</label>
+      <label htmlFor="date">Date:</label>
       <input
         type="date"
         name="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-      />       */}
+      />      
       <label htmlFor="exercise">Exercise:</label>
       <input
         type="text"
@@ -85,6 +85,13 @@ const CreateEntry = (props) => {
         value={seconds}
         onChange={(e) => setSeconds(e.target.value)}
       />       
+      <label htmlFor="notes">Status:</label>
+      <input
+        type="text"
+        name="status"
+        value={status}
+        onChange={(e) => setStatus(e.target.value)}
+      /> 
       <label htmlFor="notes">Notes:</label>
       <input
         type="text"
