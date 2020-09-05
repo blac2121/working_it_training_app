@@ -8,6 +8,7 @@ const CreateEntry = (props) => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [duration, setDuration] = useState(0)
+  const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
 
   const calculateDuration = () => {
@@ -21,7 +22,8 @@ const CreateEntry = (props) => {
       date,
       exercise,
       duration,
-      notes,
+      status,
+      notes
     };
 
     const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
@@ -83,6 +85,13 @@ const CreateEntry = (props) => {
         value={seconds}
         onChange={(e) => setSeconds(e.target.value)}
       />       
+      <label htmlFor="notes">Status:</label>
+      <input
+        type="text"
+        name="status"
+        value={status}
+        onChange={(e) => setStatus(e.target.value)}
+      /> 
       <label htmlFor="notes">Notes:</label>
       <input
         type="text"
