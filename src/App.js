@@ -33,11 +33,28 @@ function App() {
           <Route exact path="/">
             <div className="home-container">
               <h2 className="home-header">Workouts</h2>
-              <Link to="/add" className="add-entry-button">Add</Link>
+              <Link to="/add" className="add-entry-button">
+                <button>Add</button>
+              </Link>
               <div className="home-entry-container">
                 {workouts.map((entry) => (
                   <Link to={`/exercise/${entry.id}`} >
-                    <h3 className="home-view" key={entry.id}>{entry.fields.exercise}</h3>
+                    <div className="home-exercise-container" key={entry.id}>
+                      <div className="home-ex-icon">
+                        <h6>Icon hold</h6>
+                      </div>
+                      <div className="home-ex-data">
+                        <h3 className="home-exercise-title">{entry.fields.exercise}</h3>
+                        <p className="home-exercise-date">{entry.fields.date}</p>
+                        <p className="home-exercise-duration">{entry.fields.duration}</p>                        
+                      </div>
+                      <div className="home-ex-status">
+                        <p className="home-exercise-status">{entry.fields.status}</p>
+                      </div>
+                      <div className="home-ex-chevron">
+                        <h6>chevron</h6>
+                      </div>
+                    </div>
                   </Link>
                 ))
                 }

@@ -1,0 +1,47 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-exercise-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #757576;
+  width: 500px;
+  height: 150px;
+  margin: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+.home-ex-icon {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.home-ex-data {
+  flex-grow: 2;
+}
+
+.home-ex-status {
+  flex-grow: 1;
+}
+
+.home-ex-chevron {
+  flex-grow: 1;
+  color: #4402F5;
+}
+
+.add-entry-button {
+
+}
