@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const CreateEntry = (props) => {
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
-  const [hours, setHours] = useState("");
-  const [minutes, setMinutes] = useState("");
-  const [seconds, setSeconds] = useState("");
-  const [duration, setDuration] = useState("")
+
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [duration, setDuration] = useState(0)
+
+  const [notes, setNotes] = useState("")
 
   const calculateDuration = () => {
-    setDuration((hours * 3600) + (minutes * 60) + seconds)
+    setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
   }
 
+
   const handleSubmit = async (e) => {
-    calculateDuration();
     e.preventDefault();
+
     const fields = {
-      date,
       exercise,
-      duration
+      duration,
+      notes,
     };
+
     const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
     await axios.post(airtableURL, { fields }, {
       headers: {
@@ -28,20 +33,23 @@ const CreateEntry = (props) => {
         'Content-Type': 'application/json',
       }
     });
+    
     props.setFetchEntries(!props.fetchEntries) 
-    setDate("");
-    setExercise("");
   }
+
+  useEffect(() => { 
+    calculateDuration();
+  })
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="date">Date:</label>
+      {/* <label htmlFor="date">Date:</label>
       <input
         type="date"
         name="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-      />      
+      />       */}
       <label htmlFor="exercise">Exercise:</label>
       <input
         type="text"
@@ -58,7 +66,7 @@ const CreateEntry = (props) => {
         max="24"
         value={hours}
         onChange={(e) => setHours(e.target.value)}
-      />     
+      />      
       <label htmlFor="minutes">Minutes:</label>
       <input
         type="number"
@@ -76,7 +84,14 @@ const CreateEntry = (props) => {
         max="59"         
         value={seconds}
         onChange={(e) => setSeconds(e.target.value)}
-      />        
+      />       
+      <label htmlFor="notes">Notes:</label>
+      <input
+        type="text"
+        name="notes"
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+      /> 
       <button type="submit">Add</button>
     </form>
   )
