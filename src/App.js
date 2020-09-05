@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import axios from "axios";
 
 import NavBar from "./components/NavBar";
+import ListEntry from "./components/ListEntry";
 import ViewEntry from "./components/ViewEntry";
 import CreateEntry from "./components/CreateEntry";
 import './App.css';
@@ -32,35 +33,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <div className="home-container">
-              <h2 className="home-header">Workouts</h2>
-              <Link to="/add" className="add-entry-button">
-                <button>Add</button>
-              </Link>
-              <div className="home-entry-container">
-                {workouts.map((entry) => (
-                  <Link to={`/exercise/${entry.id}`} >
-                    <div className="home-exercise-container" key={entry.id}>
-                      <div className="home-ex-icon">
-                        <h6>Icon hold</h6>
-                      </div>
-                      <div className="home-ex-data">
-                        <h3 className="home-exercise-title">{entry.fields.exercise}</h3>
-                        <p className="home-exercise-date">{entry.fields.date}</p>
-                        <p className="home-exercise-duration">{entry.fields.duration}</p>                        
-                      </div>
-                      <div className="home-ex-status">
-                        <p className="home-exercise-status">{entry.fields.status}</p>
-                      </div>
-                      <div className="home-ex-chevron">
-                        <h6>chevron</h6>
-                      </div>
-                    </div>
-                  </Link>
-                ))
-                }
-              </div>
-            </div>
+            <ListEntry workouts={workouts} />  
           </Route>
           <Route path="/add">
             <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />

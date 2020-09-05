@@ -3,14 +3,40 @@
   flex-direction: column;
 }
 
-header {
-
+a:link {
+  text-decoration: none;
 }
 
-main {
+nav {
+  margin-left: 24px;
+}
+
+.nav-title {
+  color: white;
+  font-size: 36px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.nav-subtitle {
+  color: white;
+  font-size: 24px;
+  margin-top: 4px;
+}
+
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  background-color: #5128E8; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
 }
 
 .home-exercise-container {
