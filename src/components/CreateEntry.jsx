@@ -2,25 +2,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const CreateEntry = (props) => {
-  // const [date, setDate] = useState("");
+  const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
-
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [duration, setDuration] = useState(0)
-
   const [notes, setNotes] = useState("")
 
   const calculateDuration = () => {
     setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const fields = {
+      date,
       exercise,
       duration,
       notes,
@@ -33,7 +31,7 @@ const CreateEntry = (props) => {
         'Content-Type': 'application/json',
       }
     });
-    
+
     props.setFetchEntries(!props.fetchEntries) 
   }
 
@@ -43,13 +41,13 @@ const CreateEntry = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <label htmlFor="date">Date:</label>
+      <label htmlFor="date">Date:</label>
       <input
         type="date"
         name="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-      />       */}
+      />      
       <label htmlFor="exercise">Exercise:</label>
       <input
         type="text"
