@@ -110,7 +110,7 @@ const ListEntry = (props) => {
               <IconEntryCard>{dumbbell}</IconEntryCard>
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
-                <p>{entry.fields.exercise}</p>
+                <p>{entry.fields.date}</p>
                 <p>{entry.fields.duration}</p>                        
               </DataEntryCard>
               <StatusEntryCard><p>{entry.fields.status}</p></StatusEntryCard>
