@@ -2,69 +2,70 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3A3A3A;
+  margin: 0 auto;
+  width: 600px;
+`
+
+const ListHeader = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
+
+const ListTitleDiv = styled.div`
+  text-align: left;
+`
+
+const ListButtonDiv = styled.div`
+  margin-left: 360px;
+`
+
+const ListTitle = styled.h3`
+  color: white;
+  font-size: 24px;
+`
+
+const AddButton = styled.button`
+  background-color: #212FAD; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+`
+
+const EntryCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: #4C4C4D;
+  width: 500px;
+  height: 150px;
+  margin: 30px;
+  color: white;
+`
+
+const IconEntryCard = styled.div`
+  flex-grow: 1;
+  padding: 10px;
+`
+
+const DataEntryCard = styled.div`
+  flex-grow: 2;
+`
+
+const StatusEntryCard = styled.div`
+  flex-grow: 1;
+`
+
+const ChevronEntryCard = styled.div`
+  flex-grow: 1;
+  color: #212FAD;
+`    
 
 const ListEntry = (props) => {
-
-  const Main = styled.main`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `
-
-  const ListHeader = styled.div`
-    display: flex;
-    align-items: flex-end;
-  `
-
-  const ListTitleDiv = styled.div`
-    text-align: left;
-  `
-
-  const ListButtonDiv = styled.div`
-    margin-left: 360px;
-  `
-
-  const ListTitle = styled.h3`
-    color: white;
-    font-size: 24px;
-  `
-
-  const AddButton = styled.button`
-    background-color: #212FAD; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    font-size: 16px;
-  `
-
-  const EntryCard = styled.div`
-    display: flex;
-    flex-direction: row;
-    background-color: #4C4C4D;
-    width: 500px;
-    height: 150px;
-    margin: 30px;
-    color: white;
-    text-decoration: none;
-  `
-
-  const IconEntryCard = styled.div`
-    flex-grow: 1;
-    padding: 10px;
-  `
- 
-  const DataEntryCard = styled.div`
-    flex-grow: 2;
-  `
-
-  const StatusEntryCard = styled.div`
-    flex-grow: 1;
-  `
-  
-  const ChevronEntryCard = styled.div`
-    flex-grow: 1;
-    color: #4402F5;
-  `    
   
   return (
     <Main>
