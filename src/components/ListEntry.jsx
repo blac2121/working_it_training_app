@@ -48,6 +48,7 @@ const AddButton = styled.button`
 const EntryCard = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   background-color: #4C4C4D;
   box-shadow: 1px 1px 1px 1px #282829;
   width: 500px;
@@ -77,7 +78,6 @@ const StatusEntryCard = styled.div`
 
 const ChevronEntryCard = styled.div`
   flex-grow: 1;
-  color: #212FAD;
 `    
 
 const ListEntry = (props) => {
@@ -91,7 +91,7 @@ const ListEntry = (props) => {
         <ListButtonDiv>
           <Link to="/add">
             <AddButton>Add</AddButton>
-          </Link>
+\          </Link>
         </ListButtonDiv>
       </ListHeader>
       <div>

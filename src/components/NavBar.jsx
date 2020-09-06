@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 const Nav = styled.nav`
-    margin-left: 24px;
+  margin-left: 24px;
 `
 
 const NavTitle = styled.h1`

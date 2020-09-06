@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import ListEntry from "./components/ListEntry";
 import ViewEntry from "./components/ViewEntry";
 import CreateEntry from "./components/CreateEntry";
+import FooterBar from "./components/FooterBar";
 import './App.css';
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <footer>
+        <FooterBar />
+      </footer> 
     </div>
   );
 }
