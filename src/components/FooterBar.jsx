@@ -5,8 +5,6 @@ const FooterAttribution = styled.h6`
   color: white;
   text-align: center;
   font-size: 12px;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 `
 

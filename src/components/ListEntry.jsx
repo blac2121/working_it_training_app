@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
+import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
 
 const Main = styled.div`
@@ -31,21 +34,6 @@ const ListTitle = styled.h3`
   font-size: 24px;
 `
 
-// const AddButton = styled.button`
-//   background-color: #42C9FB; 
-//   border: none;
-//   color: white;
-//   padding: 15px 32px;
-//   font-size: 16px;
-//   border-radius: 2px;
-//   cursor: pointer;
-//   font-weight: 700;
-
-//   &:hover {
-//     background: #68BBDA;
-//   }
-// `
-
 const EntryCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -57,6 +45,7 @@ const EntryCard = styled.div`
   margin: 30px;
   color: white;
   transition: all .2s ease-in-out;
+  border-radius: 2px;
 
   &:hover {
     background: #4F4E4E;
@@ -66,8 +55,16 @@ const EntryCard = styled.div`
 
 const IconEntryCard = styled.div`
   flex-grow: 1;
-  padding: 10px;
+  text-align: center;
+  // padding-left: 20px;
 `
+
+const dumbbell =
+  <FontAwesomeIcon
+    icon={faDumbbell}
+    size="2x"
+    color="#42C9FB"
+  />
 
 const DataEntryCard = styled.div`
   flex-grow: 2;
@@ -79,10 +76,21 @@ const StatusEntryCard = styled.div`
 
 const ChevronEntryCard = styled.div`
   flex-grow: 1;
+  cursor: pointer;
 `    
+const chevron =
+  <FontAwesomeIcon
+    icon={faChevronCircleRight}
+    size="2x"
+    color="white"
+  />
 
 const ListEntry = (props) => {
-  
+
+  // const dateInput = new Date(entry.fields.date.replace(/-/g, '\/'))
+  // const formattedDate = dateInput.toDateString()
+
+ 
   return (
     <Main>
       <ListHeader>
@@ -99,20 +107,14 @@ const ListEntry = (props) => {
         {props.workouts.map((entry) => (
           <Link to={`/exercise/${entry.id}`} >
             <EntryCard key={entry.id}>
-              <IconEntryCard>
-                <h6>Icon hold</h6>
-              </IconEntryCard>
+              <IconEntryCard>{dumbbell}</IconEntryCard>
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
                 <p>{entry.fields.date}</p>
                 <p>{entry.fields.duration}</p>                        
               </DataEntryCard>
-              <StatusEntryCard>
-                <p>{entry.fields.status}</p>
-              </StatusEntryCard>
-              <ChevronEntryCard>
-                <h6>chevron</h6>
-              </ChevronEntryCard>
+              <StatusEntryCard><p>{entry.fields.status}</p></StatusEntryCard>
+              <ChevronEntryCard>{chevron}</ChevronEntryCard>
             </EntryCard>
           </Link>
         ))
