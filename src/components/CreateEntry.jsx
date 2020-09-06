@@ -232,9 +232,16 @@ const CreateEntry = (props) => {
             <label htmlFor="notes">Notes</label>
           </div>
           <div>
-            <input
+            {/* <input
               type="text"
               name="notes"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              />   */}
+            <textarea
+              name="notes"
+              rows="5"
+              cols="50"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
             />             
