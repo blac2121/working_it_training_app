@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components'
+import SubmitButton from "./SubmitButton";
 // import EditEntry from "./EditEntry";
 
 const ViewContainer = styled.div`
@@ -23,21 +24,6 @@ const ViewTitle = styled.h3`
   font-size: 24px;
 `
 
-const EditButton = styled.button`
-  background-color: #42C9FB; 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  font-size: 16px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: 700;
-
-  &:hover {
-    background: #68BBDA;
-  }
-`
-
 const Entry = (props) => {
   const params = useParams();
   // const { fetchEntries, setFetchEntries, entry } = props;
@@ -52,7 +38,7 @@ const Entry = (props) => {
     <ViewContainer>
       <ViewHeader>
         <ViewTitle>{workout.fields.exercise}</ViewTitle>
-        <EditButton>Edit</EditButton>
+        <SubmitButton label="Edit"></SubmitButton>
       </ViewHeader>      
       <div>
         <p>Date: {workout.fields.date}</p>
