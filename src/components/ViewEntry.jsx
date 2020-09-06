@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
 // import EditEntry from "./EditEntry";
 
