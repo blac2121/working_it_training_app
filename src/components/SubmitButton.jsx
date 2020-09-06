@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Button = styled.button`
   background-color: #42C9FB; 
   border: none;
-  color: white;
+  color: #3A3A3A;
   padding: 15px 32px;
   font-size: 16px;
   border-radius: 2px;

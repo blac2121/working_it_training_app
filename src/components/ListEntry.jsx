@@ -45,6 +45,7 @@ const EntryCard = styled.div`
   margin: 30px;
   color: white;
   transition: all .2s ease-in-out;
+  border-radius: 2px;
 
   &:hover {
     background: #4F4E4E;
@@ -86,7 +87,10 @@ const chevron =
   />
 
 const ListEntry = (props) => {
-  
+
+  // const dateInput = new Date(entry.fields.date.replace(/-/g, '\/'))
+  // const formattedDate = dateInput.toDateString()
+
   return (
     <Main>
       <ListHeader>
@@ -103,20 +107,14 @@ const ListEntry = (props) => {
         {props.workouts.map((entry) => (
           <Link to={`/exercise/${entry.id}`} >
             <EntryCard key={entry.id}>
-              <IconEntryCard>
-                {dumbbell}
-              </IconEntryCard>
+              <IconEntryCard>{dumbbell}</IconEntryCard>
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
                 <p>{entry.fields.date}</p>
                 <p>{entry.fields.duration}</p>                        
               </DataEntryCard>
-              <StatusEntryCard>
-                <p>{entry.fields.status}</p>
-              </StatusEntryCard>
-              <ChevronEntryCard>
-                {chevron}
-              </ChevronEntryCard>
+              <StatusEntryCard><p>{entry.fields.status}</p></StatusEntryCard>
+              <ChevronEntryCard>{chevron}</ChevronEntryCard>
             </EntryCard>
           </Link>
         ))

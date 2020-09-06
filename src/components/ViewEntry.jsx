@@ -29,10 +29,14 @@ const Entry = (props) => {
   // const { fetchEntries, setFetchEntries, entry } = props;
 
   const workout = props.workouts.find((workout) => params.id === workout.id);
-  
+ 
   if (!workout) {
     return <h3>Looks like it's rest day!</h3>
   }
+
+
+  const dateInput = new Date(workout.fields.date.replace(/-/g, '\/'))
+  const formattedDate = dateInput.toDateString()
 
   return (
     <ViewContainer>
@@ -41,7 +45,8 @@ const Entry = (props) => {
         <SubmitButton label="Edit"></SubmitButton>
       </ViewHeader>      
       <div>
-        <p>Date: {workout.fields.date}</p>
+        {/* <p>Date: {workout.fields.date}</p> */}
+        <p>Date: {formattedDate}</p>
         <p>Duration: {workout.fields.duration}</p>
         <p>Status: {workout.fields.status}</p>
         <p>Notes: {workout.fields.notes}</p>
