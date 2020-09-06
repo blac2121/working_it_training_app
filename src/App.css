@@ -1,0 +1,12 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+p {
+  font-size: 18px;
+}

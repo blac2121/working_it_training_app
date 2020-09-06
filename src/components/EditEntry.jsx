@@ -17,7 +17,6 @@
 //       }
 //     });
 //     props.setFetchEntries(!props.fetchEntries)
-//     setExercise("");
 //   }
 
 //   return (

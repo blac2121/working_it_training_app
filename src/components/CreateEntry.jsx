@@ -42,7 +42,7 @@ const CreateEntry = (props) => {
   })
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="add-container" onSubmit={handleSubmit}>
       <label htmlFor="date">Date:</label>
       <input
         type="date"
@@ -99,7 +99,7 @@ const CreateEntry = (props) => {
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       /> 
-      <button type="submit">Add</button>
+      <button className="add-button" type="submit">Add</button>
     </form>
   )
 }
