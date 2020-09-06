@@ -82,7 +82,6 @@ const chevron =
   <FontAwesomeIcon
     icon={faChevronCircleRight}
     size="2x"
-    // color="#42C9FB"
     color="white"
   />
 
@@ -91,6 +90,7 @@ const ListEntry = (props) => {
   // const dateInput = new Date(entry.fields.date.replace(/-/g, '\/'))
   // const formattedDate = dateInput.toDateString()
 
+ 
   return (
     <Main>
       <ListHeader>
@@ -110,7 +110,7 @@ const ListEntry = (props) => {
               <IconEntryCard>{dumbbell}</IconEntryCard>
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
-                <p>{entry.fields.date}</p>
+                <p>{entry.fields.exercise}</p>
                 <p>{entry.fields.duration}</p>                        
               </DataEntryCard>
               <StatusEntryCard><p>{entry.fields.status}</p></StatusEntryCard>

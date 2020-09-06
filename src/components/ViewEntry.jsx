@@ -34,9 +34,18 @@ const Entry = (props) => {
     return <h3>Looks like it's rest day!</h3>
   }
 
-
   const dateInput = new Date(workout.fields.date.replace(/-/g, '\/'))
   const formattedDate = dateInput.toDateString()
+
+
+  const durationInput = workout.fields.duration
+
+  const hours = Math.floor(durationInput / 3600)
+  const minutes = Math.floor((durationInput - (hours * 3600)) / 60);
+  const seconds = durationInput - (hours * 3600) - (minutes * 60);
+
+  const formattedDuration = (`${hours}:${minutes}:${seconds}`);
+
 
   return (
     <ViewContainer>
@@ -45,9 +54,8 @@ const Entry = (props) => {
         <SubmitButton label="Edit"></SubmitButton>
       </ViewHeader>      
       <div>
-        {/* <p>Date: {workout.fields.date}</p> */}
         <p>Date: {formattedDate}</p>
-        <p>Duration: {workout.fields.duration}</p>
+        <p>Duration: {formattedDuration}</p>
         <p>Status: {workout.fields.status}</p>
         <p>Notes: {workout.fields.notes}</p>
       </div>
