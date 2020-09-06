@@ -161,9 +161,9 @@ const CreateEntry = (props) => {
 
     if (date === "" && exercise === "") {
       alert("Please enter a date and exercise!")
-    } else if (date === "" && exercise != "") {
+    } else if (date === "" && exercise !== "") {
       alert("Please enter a date!")
-    } else if (date != "" && exercise === "") {
+    } else if (date !== "" && exercise === "") {
       alert("Please enter an exercise!")
     } else { 
       

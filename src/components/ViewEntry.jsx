@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, Route, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
-// import EditEntry from "./EditEntry";
+// import EditEntry from "./EditEntry"
 
 const ViewContainer = styled.div`
   display: flex;
@@ -51,9 +51,7 @@ const Entry = (props) => {
     <ViewContainer>
       <ViewHeader>
         <ViewTitle>{workout.fields.exercise}</ViewTitle>
-        <Link to={`/edit/${workout.id}`}>
-          <SubmitButton label="Edit"></SubmitButton>
-        </Link>
+        <Link to={`/edit/${workout.id}`}><SubmitButton label="Edit"></SubmitButton></Link>
       </ViewHeader>      
       <div>
         <p>Date: {formattedDate}</p>
@@ -64,6 +62,14 @@ const Entry = (props) => {
       <div>
         <button>Delete</button>
       </div>
+      {/* <Route path="/edit/:id">
+        <EditEntry
+          workout={workout.fields}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />       
+      </Route> */}
     </ViewContainer>
   )
 }

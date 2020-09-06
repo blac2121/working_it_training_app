@@ -43,9 +43,9 @@ function App() {
           <Route path="/exercise/:id">
             <ViewEntry workouts={workouts} />
           </Route>
-          <Route path="/edit/:id">
+          {/* <Route path="/edit/:id">
             <EditEntry />
-          </Route>
+          </Route> */}
         </Switch>
       </main>
       <footer>
