@@ -148,7 +148,6 @@ const CreateEntry = (props) => {
     key === "value" && setStatus(status[key])
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -158,17 +157,26 @@ const CreateEntry = (props) => {
       duration,
       status,
       notes
-    };
+    };    
 
-    const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
-    await axios.post(airtableURL, { fields }, {
-      headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
-        'Content-Type': 'application/json',
-      }
-    });
+    if (date === "" && exercise === "") {
+      alert("Please enter a date and exercise!")
+    } else if (date === "" && exercise != "") {
+      alert("Please enter a date!")
+    } else if (date != "" && exercise === "") {
+      alert("Please enter an exercise!")
+    } else { 
+      
+      const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
+      await axios.post(airtableURL, { fields }, {
+        headers: {
+          'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
+          'Content-Type': 'application/json',
+        }
+      });
 
-    props.setFetchEntries(!props.fetchEntries) 
+      props.setFetchEntries(!props.fetchEntries)
+    }  
   }
 
   const calculateDuration = () => {

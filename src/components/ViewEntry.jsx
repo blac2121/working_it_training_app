@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { Link, Route, useParams } from 'react-router-dom';
 import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
 // import EditEntry from "./EditEntry";
@@ -51,7 +51,9 @@ const Entry = (props) => {
     <ViewContainer>
       <ViewHeader>
         <ViewTitle>{workout.fields.exercise}</ViewTitle>
-        <SubmitButton label="Edit"></SubmitButton>
+        <Link to={`/edit/${workout.id}`}>
+          <SubmitButton label="Edit"></SubmitButton>
+        </Link>
       </ViewHeader>      
       <div>
         <p>Date: {formattedDate}</p>
