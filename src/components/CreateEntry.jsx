@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
+import SubmitButton from "./SubmitButton";
+// import CancelButton from "./CancelButton";
 
 const AddContainer = styled.div`
   display: flex;
@@ -34,6 +36,16 @@ const DateInput = styled.div`
   margin-bottom: 20px;
 `
 
+const DateField = styled.input`
+  border-radius: 2px;
+  border: 1px solid white;
+  height: 35px;
+  width: 200px;
+  font-family: 'Titillium Web';
+  padding-left: 10px;
+  padding-right: 01px;
+`
+
 const ExerciseInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
@@ -43,10 +55,20 @@ const Duration = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 415px;
 `
 
-const DurationLabel = styled.h4`
+const DurationLabel = styled.label`
   margin-bottom: 5px;
+`
+
+const TimeLable = styled.label`
+  margin-right: 7px;
+`
+
+const TimeInput = styled.input`
+  width: 40px;
+  heoght: 25px;
 `
 
 const DurationInputs = styled.div`
@@ -59,6 +81,21 @@ const StatusInput = styled.div`
   width: 275px;
 `
 
+const NotesInput = styled.div`
+  margin-bottom: 20px;
+  width: 275px;
+`
+
+const NotesField = styled.textarea`
+  font-family: 'Titillium Web';
+`
+
+
+const ButtonDiv = styled.div`
+  display: flex;
+  // justify-content: space-between;
+  justify-content: flex-end;
+`
 
 const dropdownStyle = {
   menu: (provided, selector) => ({
@@ -73,9 +110,9 @@ const dropdownStyle = {
 const CreateEntry = (props) => {
   const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [hours, setHours] = useState("");
+  const [minutes, setMinutes] = useState("");
+  const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0)
   const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
@@ -143,6 +180,7 @@ const CreateEntry = (props) => {
     calculateDuration();
   })
 
+
   return (
     <AddContainer>
       <AddHeader>
@@ -154,11 +192,11 @@ const CreateEntry = (props) => {
             <label htmlFor="date">Date</label>
           </div>
           <div>
-            <input
-            type="date"
-            name="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            <DateField
+              type="date"
+              name="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />                       
           </div>
         </DateInput>
@@ -182,33 +220,39 @@ const CreateEntry = (props) => {
             <DurationLabel>Duration</DurationLabel>
           </div>
           <DurationInputs>
-            <label htmlFor="hours">Hours</label>
-            <input
-              type="number"
-              name="hours"
-              min="0"
-              max="24"
-              value={hours}
-              onChange={(e) => setHours(e.target.value)}
-            />      
-            <label htmlFor="minutes">Minutes</label>
-            <input
-              type="number"
-              name="minutes"
-              min="0"
-              max="59"        
-              value={minutes}
-              onChange={(e) => setMinutes(e.target.value)}
-            />  
-            <label htmlFor="seconds">Seconds</label>
-            <input
-              type="number"
-              name="seconds"
-              min="0"
-              max="59"         
-              value={seconds}
-              onChange={(e) => setSeconds(e.target.value)}
-            />                 
+            <div>
+              <TimeLable htmlFor="hours">Hours</TimeLable>
+              <TimeInput
+                type="number"
+                name="hours"
+                min="0"
+                max="24"
+                value={hours}
+                onChange={(e) => setHours(e.target.value)}
+              />                    
+            </div>
+            <div>
+              <TimeLable htmlFor="minutes">Minutes</TimeLable>
+              <TimeInput
+                type="number"
+                name="minutes"
+                min="0"
+                max="59"        
+                value={minutes}
+                onChange={(e) => setMinutes(e.target.value)}
+              />                
+            </div>
+            <div>
+              <TimeLable htmlFor="seconds">Seconds</TimeLable>
+              <TimeInput
+                type="number"
+                name="seconds"
+                min="0"
+                max="59"         
+                value={seconds}
+                onChange={(e) => setSeconds(e.target.value)}
+              />                               
+            </div>
           </DurationInputs>  
         </Duration>
         <StatusInput>
@@ -227,30 +271,25 @@ const CreateEntry = (props) => {
             />              
           </div>
         </StatusInput>
-        <div>
+        <NotesInput>
           <div>
             <label htmlFor="notes">Notes</label>
           </div>
           <div>
-            {/* <input
-              type="text"
-              name="notes"
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              />   */}
-            <textarea
+            <NotesField
               name="notes"
               rows="5"
-              cols="50"
+              cols="65"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
             />             
           </div>
-        </div>
-        <div>
-          <button type="reset">Cancel</button>
-          <button type="submit">Add</button> 
-        </div>
+        </NotesInput>
+        <ButtonDiv>
+          {/* <CancelButton label="Cancel" handleClick="handleReset"></CancelButton> */}
+          {/* <button type="reset" onClick={handleReset}>Cancel</button> */}
+          <SubmitButton label="Add" handleClick="onSubmit"></SubmitButton>
+        </ButtonDiv>
       </AddForm>  
     </AddContainer>  
   )

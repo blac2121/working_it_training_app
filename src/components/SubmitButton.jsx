@@ -19,7 +19,7 @@ const Button = styled.button`
 const SubmitButton = (props) => {
 
   return (
-    <Button>{props.label}</Button>
+    <Button onClick={props.handleClick}>{props.label}</Button>
   )
   
 }
