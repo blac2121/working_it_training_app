@@ -48,20 +48,20 @@ Table 2:
 
 ## MVP
 
-1. Home page: Blank State
-2. Home page: List all Workouts 
-3. View workout 
-4. Add workout 
-5. Mobile Compatibility
+1. Home page: List all Workouts 
+2. View workout 
+3. Add workout 
+4. Mobile Compatibility
 
 ## Post-MVP
 
 1. Edit workout
 2. Delete workout
 3. More fields > average heart rate, calories burned
-4. user login 
-5. create workout templates
-6. Workout graphs
+4. Home page: Blank State
+5. user login 
+6. create workout templates
+7. Workout graphs
 
 #### Component Libraries
 Considering use of [FontAwesome's Icon Library](https://www.npmjs.com/package/@fortawesome/react-fontawesome)
