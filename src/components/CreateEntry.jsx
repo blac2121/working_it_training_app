@@ -14,6 +14,21 @@ const AddContainer = styled.div`
   padding: 20px;
   color: white;
   box-shadow: 1px 1px 1px 1px #282829;
+
+  @media (max-width: 768px) {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+    margin: 20px auto;
+  }
+
+  @media (max-width: 320px) {
+    width: 275px;
+    margin: 20px auto;
+  }
 `
 const AddHeader = styled.div`
   display: flex;
@@ -49,6 +64,14 @@ const DateField = styled.input`
 const ExerciseInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const Duration = styled.div`
@@ -56,29 +79,71 @@ const Duration = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   width: 415px;
+
 `
 
 const DurationLabel = styled.label`
   margin-bottom: 5px;
 `
-
-const TimeLable = styled.label`
+const HoursLabel = styled.label`
   margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 22px;
+  }
 `
+const MinutesLabel = styled.label`
+  margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 8px;
+  }
+`
+const SecondsLabel = styled.label`
+  margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 6px;
+  }
+`
+
 
 const TimeInput = styled.input`
   width: 40px;
-  heoght: 25px;
+  height: 25px;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin-top: 8px;
+
+  @media (max-width: 425px) {
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 2px;
+  }
 `
 
 const DurationInputs = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
 `
 
 const StatusInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const NotesInput = styled.div`
@@ -88,6 +153,14 @@ const NotesInput = styled.div`
 
 const NotesField = styled.textarea`
   font-family: 'Titillium Web';
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 220px;
+  }
 `
 
 
@@ -225,7 +298,7 @@ const CreateEntry = (props) => {
           </div>
           <DurationInputs>
             <div>
-              <TimeLable htmlFor="hours">Hours</TimeLable>
+              <HoursLabel htmlFor="hours">Hours</HoursLabel>
               <TimeInput
                 type="number"
                 name="hours"
@@ -236,7 +309,7 @@ const CreateEntry = (props) => {
               />                    
             </div>
             <div>
-              <TimeLable htmlFor="minutes">Minutes</TimeLable>
+              <MinutesLabel htmlFor="minutes">Minutes</MinutesLabel>
               <TimeInput
                 type="number"
                 name="minutes"
@@ -247,7 +320,7 @@ const CreateEntry = (props) => {
               />                
             </div>
             <div>
-              <TimeLable htmlFor="seconds">Seconds</TimeLable>
+              <SecondsLabel htmlFor="seconds">Seconds</SecondsLabel>
               <TimeInput
                 type="number"
                 name="seconds"
@@ -267,7 +340,6 @@ const CreateEntry = (props) => {
             <Select
               name="status"
               styles={dropdownStyle}
-              // width=300
               menuColor='black'
               defaultValue={status}
               options={statusOptions}        

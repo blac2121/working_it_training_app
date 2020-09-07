@@ -30,6 +30,19 @@ const ViewContainer = styled.div`
   padding: 20px;
   color: white;
   box-shadow: 1px 1px 1px 1px #282829;
+
+  @media (max-width: 768px) {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+  }
+
+  @media (max-width: 320px) {
+    margin-left: 20px;
+  }
 `
 const ViewHeader = styled.div`
   display: flex;
@@ -52,23 +65,6 @@ const ViewDataRows = styled.div`
   align-items: center;
 `
 
-// const DeleteButton = styled.button`
-//   background-color: #CDCBCB; 
-//   border: none;
-//   color: #3A3A3A;
-//   padding: 10px 15px;
-//   font-size: 16px;
-//   border-radius: 2px;
-//   cursor: pointer;
-//   font-weight: 700;
-
-//   &:hover {
-//     background: #A7A5A5;
-//   }
-// `
-
-
-
 const ViewLabels = styled.label`
   font-size: 18px;
 `
@@ -79,10 +75,8 @@ const ViewData = styled.p`
   padding-left: 10px;
 `
 
-
 const Entry = (props) => {
   const params = useParams();
-  // const { fetchEntries, setFetchEntries, entry } = props;
 
   const workout = props.workouts.find((workout) => params.id === workout.id);
  

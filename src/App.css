@@ -7,3 +7,12 @@ a:link {
   text-decoration: none;
 }
 
+
+@media (max-width: 425px) {
+  .App {
+    align-items: center;
+  }
+  main {
+    margin: auto;
+  }  
+}
