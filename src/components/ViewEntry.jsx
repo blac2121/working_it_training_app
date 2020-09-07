@@ -24,12 +24,13 @@ const editPencil =
 const ViewContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #4C4C4D;
+  background-color: #3A3A3A;
   width: 500px;
+  height: 410px;
   margin: 30px auto;
   padding: 20px;
   color: white;
-  box-shadow: 1px 1px 1px 1px #282829;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
 
   @media (max-width: 768px) {
     width: 500px;
@@ -58,6 +59,10 @@ const ViewTitle = styled.h3`
 const ViewDataContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: #4C4C4D;
+  box-shadow: 1px 1px 1px 1px #282829;
+  border-radius: 2px;
+  padding: 15px;
 `
 
 const ViewDataRows = styled.div`
@@ -73,6 +78,12 @@ const ViewData = styled.p`
   color: #42C9FB;
   font-size: 18px;
   padding-left: 10px;
+`
+
+const DeleteDiv = styled.div`
+  margin-top: 14px;
+  margin-left: 10px;
+  cursor: pointer;
 `
 
 const Entry = (props) => {
@@ -133,7 +144,7 @@ const Entry = (props) => {
           <ViewData>{workout.fields.notes}</ViewData>
         </ViewDataRows>
       </ViewDataContainer>
-      <div onClick={handleDelete}>{deleteTrash}</div>
+      <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
       {/* <Route path="/edit/:id">
         <EditEntry
           workout={workout.fields}

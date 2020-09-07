@@ -6,6 +6,20 @@ import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
 
+const dumbbell =
+  <FontAwesomeIcon
+    icon={faDumbbell}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const chevron =
+  <FontAwesomeIcon
+    icon={faChevronCircleRight}
+    size="2x"
+    color="white"
+  />
+
 const Main = styled.div`
   display: flex;
   flex-direction: column;
@@ -113,15 +127,7 @@ const IconEntryCard = styled.div`
   @media (max-width: 320px) {
     display: none;
   }
-  
 `
-
-const dumbbell =
-  <FontAwesomeIcon
-    icon={faDumbbell}
-    size="2x"
-    color="#42C9FB"
-  />
   
 const DataEntryCard = styled.div`
   flex-grow: 2;
@@ -139,19 +145,9 @@ const ChevronEntryCard = styled.div`
   flex-grow: 1;
   cursor: pointer;
 `    
-const chevron =
-  <FontAwesomeIcon
-    icon={faChevronCircleRight}
-    size="2x"
-    color="white"
-  />
- 
+
 
 const ListEntry = (props) => {
-
-  // const dateInput = new Date(entry.fields.date.replace(/-/g, '\/'))
-  // const formattedDate = dateInput.toDateString()
-
  
   return (
     <Main>

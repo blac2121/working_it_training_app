@@ -8,12 +8,12 @@ import SubmitButton from "./SubmitButton";
 const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #4C4C4D;
+  background-color: #3A3A3A;
   width: 500px;
   margin: 30px auto;
   padding: 20px;
   color: white;
-  box-shadow: 1px 1px 1px 1px #282829;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
 
   @media (max-width: 768px) {
     width: 400px;
@@ -39,12 +39,16 @@ const AddHeader = styled.div`
 const AddTitle = styled.h3`
   color: white;
   font-size: 24px;
+  margin-bottom: 35px;
 `
 
 const AddForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 5px 25px 25px 25px;
+  padding: 20px 25px 25px 25px;
+  background-color: #4C4C4D;
+  box-shadow: 1px 1px 1px 1px #282829;
+  border-radius: 2px;
 `
 
 const DateInput = styled.div`
