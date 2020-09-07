@@ -49,8 +49,8 @@ Table 2:
 ## MVP
 
 1. Home page: Blank State
-2. Home page: List Workouts > workout, date, duration, review
-3. View workout > workout, date, duration, review, notes
+2. Home page: List all Workouts 
+3. View workout 
 4. Add workout 
 
 ## Post-MVP

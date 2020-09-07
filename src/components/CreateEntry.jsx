@@ -122,20 +122,17 @@ const CreateEntry = (props) => {
     { value: 'Run', label: 'Run' },
     { value: 'Swim', label: 'Swim' },
     { value: 'Walk', label: 'Walk' },
-    { value: 'Rower', label: 'Rower' },
-    { value: 'Elliptical', label: 'Elliptical' },
-    { value: 'High Intensity Interval Training', label: 'High Intensity Interval Training' },
-    { value: 'Stair Stepper', label: 'Stair Stepper' },
-    { value: 'Hiking', label: 'Hiking' },
-    { value: 'Yoga', label: 'Yoga' },
-    { value: 'Dance', label: 'Dance' },
+    { value: 'Hiking', label: 'Hiking' }, 
     { value: 'Strength Training', label: 'Strength Training' },
+    { value: 'High Intensity Interval Training', label: 'High Intensity Interval Training' },
+    { value: 'Dance', label: 'Dance' },
     { value: 'Other', label: 'Other' },
   ];
 
   for (let key in exercise) {
     key === "value" && setExercise(exercise[key])
   }
+
 
   // Sets and Processes Status Drop Down
   const statusOptions = [
@@ -148,7 +145,6 @@ const CreateEntry = (props) => {
     key === "value" && setStatus(status[key])
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -158,17 +154,26 @@ const CreateEntry = (props) => {
       duration,
       status,
       notes
-    };
+    };    
 
-    const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
-    await axios.post(airtableURL, { fields }, {
-      headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
-        'Content-Type': 'application/json',
-      }
-    });
+    if (date === "" && exercise === "") {
+      alert("Please enter a date and exercise!")
+    } else if (date === "" && exercise !== "") {
+      alert("Please enter a date!")
+    } else if (date !== "" && exercise === "") {
+      alert("Please enter an exercise!")
+    } else { 
+      
+      const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
+      await axios.post(airtableURL, { fields }, {
+        headers: {
+          'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
+          'Content-Type': 'application/json',
+        }
+      });
 
-    props.setFetchEntries(!props.fetchEntries) 
+      props.setFetchEntries(!props.fetchEntries)
+    }  
   }
 
   const calculateDuration = () => {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
 
@@ -66,12 +67,19 @@ const dumbbell =
     color="#42C9FB"
   />
 
+  const deletetrash =
+  <FontAwesomeIcon
+    icon={faEdit}
+    size="2x"
+    color="#42C9FB"
+    />
+  
 const DataEntryCard = styled.div`
   flex-grow: 2;
 `
 
-const StatusEntryCard = styled.div`
-  flex-grow: 1;
+const DataStatus = styled.p`
+  font-style: italic;
 `
 
 const ChevronEntryCard = styled.div`
@@ -84,6 +92,7 @@ const chevron =
     size="2x"
     color="white"
   />
+ 
 
 const ListEntry = (props) => {
 
@@ -100,7 +109,8 @@ const ListEntry = (props) => {
         <ListButtonDiv>
           <Link to="/add">
             <SubmitButton label="Add"></SubmitButton>
-           </Link>
+          </Link>
+          {deletetrash}
         </ListButtonDiv>
       </ListHeader>
       <div>
@@ -110,10 +120,8 @@ const ListEntry = (props) => {
               <IconEntryCard>{dumbbell}</IconEntryCard>
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
-                <p>{entry.fields.date}</p>
-                <p>{entry.fields.duration}</p>                        
+                <DataStatus>{entry.fields.status}</DataStatus>                        
               </DataEntryCard>
-              <StatusEntryCard><p>{entry.fields.status}</p></StatusEntryCard>
               <ChevronEntryCard>{chevron}</ChevronEntryCard>
             </EntryCard>
           </Link>

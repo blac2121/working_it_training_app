@@ -1,8 +1,25 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import axios from "axios";
+import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
-import SubmitButton from "./SubmitButton";
-// import EditEntry from "./EditEntry";
+// import EditEntry from "./EditEntry"
+
+const deleteTrash =
+  <FontAwesomeIcon
+    icon={faTrashAlt}
+    size="2x"
+    color="#282829"
+  />
+
+const editPencil =
+  <FontAwesomeIcon
+    icon={faEdit}
+    size="2x"
+    color="#42C9FB"
+  />
 
 const ViewContainer = styled.div`
   display: flex;
@@ -19,10 +36,49 @@ const ViewHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `
+
 const ViewTitle = styled.h3`
   color: white;
   font-size: 24px;
 `
+
+const ViewDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const ViewDataRows = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+// const DeleteButton = styled.button`
+//   background-color: #CDCBCB; 
+//   border: none;
+//   color: #3A3A3A;
+//   padding: 10px 15px;
+//   font-size: 16px;
+//   border-radius: 2px;
+//   cursor: pointer;
+//   font-weight: 700;
+
+//   &:hover {
+//     background: #A7A5A5;
+//   }
+// `
+
+
+
+const ViewLabels = styled.label`
+  font-size: 18px;
+`
+
+const ViewData = styled.p`
+  color: #42C9FB;
+  font-size: 18px;
+  padding-left: 10px;
+`
+
 
 const Entry = (props) => {
   const params = useParams();
@@ -46,22 +102,52 @@ const Entry = (props) => {
 
   const formattedDuration = (`${hours}:${minutes}:${seconds}`);
 
+  const handleDelete = async () => {
+    const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts/${workout.id}`;
+    await axios.delete(airtableURL, {
+      headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
+      }
+    });
+    props.setFetchEntries(!props.fetchEntries);
+  }
+
 
   return (
     <ViewContainer>
       <ViewHeader>
         <ViewTitle>{workout.fields.exercise}</ViewTitle>
-        <SubmitButton label="Edit"></SubmitButton>
+        <Link to={`/edit/${workout.id}`}>
+          <div>{editPencil}</div>
+        </Link>
       </ViewHeader>      
-      <div>
-        <p>Date: {formattedDate}</p>
-        <p>Duration: {formattedDuration}</p>
-        <p>Status: {workout.fields.status}</p>
-        <p>Notes: {workout.fields.notes}</p>
-      </div>
-      <div>
-        <button>Delete</button>
-      </div>
+      <ViewDataContainer>
+        <ViewDataRows>
+          <ViewLabels>Date:</ViewLabels>
+          <ViewData>{formattedDate}</ViewData>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Duration:</ViewLabels>
+          <ViewData>{formattedDuration}</ViewData>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Status:</ViewLabels>
+          <ViewData>{workout.fields.status}</ViewData>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Notes:</ViewLabels>
+          <ViewData>{workout.fields.notes}</ViewData>
+        </ViewDataRows>
+      </ViewDataContainer>
+      <div onClick={handleDelete}>{deleteTrash}</div>
+      {/* <Route path="/edit/:id">
+        <EditEntry
+          workout={workout.fields}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />       
+      </Route> */}
     </ViewContainer>
   )
 }
