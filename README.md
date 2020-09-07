@@ -52,6 +52,7 @@ Table 2:
 2. Home page: List all Workouts 
 3. View workout 
 4. Add workout 
+5. Mobile Compatibility
 
 ## Post-MVP
 
