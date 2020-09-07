@@ -86,6 +86,40 @@ const DeleteDiv = styled.div`
   cursor: pointer;
 `
 
+const NoResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3A3A3A;
+  margin: 0 auto;
+  width: 500px;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
+
+  @media (max-width: 768px) {
+    width: 500px;
+  }
+
+  @media (max-width: 425px) {
+    margin: 0 auto;
+    width: 325px;
+  }
+
+  @media (max-width: 320px) {
+    width: 315px;
+    margin-left: 20px;
+  }
+`
+
+const NoResultsText = styled.h3`
+  color: white;
+`
+
+const NoResultsDirections = styled.p`
+  color: #42C9FB;
+  font-size: 18px;
+  margin-top: 0;
+`
+
 const Entry = (props) => {
   const history = useHistory();
   const params = useParams();
@@ -93,12 +127,16 @@ const Entry = (props) => {
   const workout = props.workouts.find((workout) => params.id === workout.id);
  
   if (!workout) {
-    return <h3>Looks like it's rest day!</h3>
+    return (
+      <NoResults>
+        <NoResultsText>Looks like it's rest day!</NoResultsText>
+        <NoResultsDirections>Navigate back to the home page to add a new workout.</NoResultsDirections>
+      </NoResults>
+    )
   }
 
   const dateInput = new Date(workout.fields.date.replace(/-/g, '\/'))
   const formattedDate = dateInput.toDateString()
-
 
   const durationInput = workout.fields.duration
 

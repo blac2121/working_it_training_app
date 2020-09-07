@@ -204,9 +204,8 @@ const ChevronEntryCard = styled.div`
   cursor: pointer;
 `    
 
-
 const ListEntry = (props) => {
- 
+
   return (
     <Main>
       <ListHeader>
@@ -220,35 +219,39 @@ const ListEntry = (props) => {
         </ListButtonDiv>
       </ListHeader>
       <div>
-        {props.workouts.map((entry) => (
-          <Link to={`/exercise/${entry.id}`} >
-            <EntryCard key={entry.id}>
-              {/* {entry.fields.exercise === ("Strength Training" || "HIIT" || "Other")
-                ? <IconEntryCard>{dumbbell}</IconEntryCard> 
-                : <IconEntryCard>{cardio}</IconEntryCard>
-                } */}
-              {(() => {
-                switch (entry.fields.exercise) {
-                  case "Cycle": return <IconEntryCard>{cycle}</IconEntryCard>;
-                  case "Run": return <IconEntryCard>{run}</IconEntryCard>;
-                  case "Swim": return <IconEntryCard>{swim}</IconEntryCard>;
-                  case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
-                  case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
-                  case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
-                  case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
-                  case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
-                  case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
-                  default: return <IconEntryCard>{stopwatch}</IconEntryCard>
-                }
-              })()}  
-              <DataEntryCard>
-                <h3>{entry.fields.exercise}</h3>
-                <DataStatus>{entry.fields.status}</DataStatus>                        
-              </DataEntryCard>
-              <ChevronEntryCard>{chevron}</ChevronEntryCard>
-            </EntryCard>
-          </Link>
-        ))
+        {props.workouts.map((entry, index) => {
+          return (
+            <div key={index}>
+              {props.workouts <= 0 ? console.log("Add a workout to get started") :
+                // <div>
+                  <Link to={`/exercise/${entry.id}`} >
+                    <EntryCard key={entry.id}>
+                      {(() => {
+                        switch (entry.fields.exercise) {
+                          case "Cycle": return <IconEntryCard>{cycle}</IconEntryCard>;
+                          case "Run": return <IconEntryCard>{run}</IconEntryCard>;
+                          case "Swim": return <IconEntryCard>{swim}</IconEntryCard>;
+                          case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
+                          case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
+                          case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
+                          case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                          case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
+                          case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                          default: return <IconEntryCard>{stopwatch}</IconEntryCard>
+                        }
+                      })()}  
+                      <DataEntryCard>
+                        <h3>{entry.fields.exercise}</h3>
+                        <DataStatus>{entry.fields.status}</DataStatus>                        
+                      </DataEntryCard>
+                      <ChevronEntryCard>{chevron}</ChevronEntryCard>
+                    </EntryCard>
+                  </Link>
+                // </div>
+              }
+            </div>
+          )
+        })
         }
       </div>
     </Main>
