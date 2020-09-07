@@ -70,8 +70,8 @@ const DataEntryCard = styled.div`
   flex-grow: 2;
 `
 
-const StatusEntryCard = styled.div`
-  flex-grow: 1;
+const DataStatus = styled.p`
+  font-style: italic;
 `
 
 const ChevronEntryCard = styled.div`
@@ -84,6 +84,7 @@ const chevron =
     size="2x"
     color="white"
   />
+ 
 
 const ListEntry = (props) => {
 
@@ -110,10 +111,8 @@ const ListEntry = (props) => {
               <IconEntryCard>{dumbbell}</IconEntryCard>
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
-                <p>{entry.fields.date}</p>
-                <p>{entry.fields.duration}</p>                        
+                <DataStatus>{entry.fields.status}</DataStatus>                        
               </DataEntryCard>
-              <StatusEntryCard><p>{entry.fields.status}</p></StatusEntryCard>
               <ChevronEntryCard>{chevron}</ChevronEntryCard>
             </EntryCard>
           </Link>

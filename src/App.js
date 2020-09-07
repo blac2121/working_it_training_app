@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 import ListEntry from "./components/ListEntry";
 import ViewEntry from "./components/ViewEntry";
 import CreateEntry from "./components/CreateEntry";
-import EditEntry from "./components/EditEntry";
+// import EditEntry from "./components/EditEntry";
 import FooterBar from "./components/FooterBar";
 import './App.css';
 

@@ -20,10 +20,31 @@ const ViewHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `
+
 const ViewTitle = styled.h3`
   color: white;
   font-size: 24px;
 `
+const DeleteButton = styled.button`
+  background-color: #CDCBCB; 
+  border: none;
+  color: #3A3A3A;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background: #A7A5A5;
+  }
+`
+
+const ViewData = styled.p`
+  color: #42C9FB;
+  font-size: 18px;
+`
+
 
 const Entry = (props) => {
   const params = useParams();
@@ -65,13 +86,25 @@ const Entry = (props) => {
         <Link to={`/edit/${workout.id}`}><SubmitButton label="Edit"></SubmitButton></Link>
       </ViewHeader>      
       <div>
-        <p>Date: {formattedDate}</p>
-        <p>Duration: {formattedDuration}</p>
-        <p>Status: {workout.fields.status}</p>
-        <p>Notes: {workout.fields.notes}</p>
+        <div>
+          <label>Date:</label>
+          <ViewData>{formattedDate}</ViewData>
+        </div>
+        <div>
+          <label>Duration:</label>
+          <ViewData>{formattedDuration}</ViewData>
+        </div>
+        <div>
+          <label>Status:</label>
+          <ViewData>{workout.fields.status}</ViewData>
+        </div>
+        <div>
+          <label>Notes:</label>
+          <ViewData>{workout.fields.notes}</ViewData>
+        </div>
       </div>
       <div>
-        <button onClick={handleDelete}>Delete</button>
+        <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
       </div>
       {/* <Route path="/edit/:id">
         <EditEntry
