@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +26,6 @@ const ViewContainer = styled.div`
   flex-direction: column;
   background-color: #3A3A3A;
   width: 500px;
-  height: 410px;
   margin: 30px auto;
   padding: 20px;
   color: white;
@@ -45,6 +44,7 @@ const ViewContainer = styled.div`
     margin-left: 20px;
   }
 `
+
 const ViewHeader = styled.div`
   display: flex;
   align-items: center;
@@ -87,6 +87,7 @@ const DeleteDiv = styled.div`
 `
 
 const Entry = (props) => {
+  const history = useHistory();
   const params = useParams();
 
   const workout = props.workouts.find((workout) => params.id === workout.id);
@@ -115,6 +116,7 @@ const Entry = (props) => {
       }
     });
     props.setFetchEntries(!props.fetchEntries);
+    history.push("/") 
   }
 
 

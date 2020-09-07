@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
@@ -30,12 +31,14 @@ const AddContainer = styled.div`
     margin: 20px auto;
   }
 `
+
 const AddHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
 `
+
 const AddTitle = styled.h3`
   color: white;
   font-size: 24px;
@@ -83,12 +86,12 @@ const Duration = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   width: 415px;
-
 `
 
 const DurationLabel = styled.label`
   margin-bottom: 5px;
 `
+
 const HoursLabel = styled.label`
   margin-right: 7px;
 
@@ -96,6 +99,7 @@ const HoursLabel = styled.label`
     margin-right: 22px;
   }
 `
+
 const MinutesLabel = styled.label`
   margin-right: 7px;
 
@@ -103,6 +107,7 @@ const MinutesLabel = styled.label`
     margin-right: 8px;
   }
 `
+
 const SecondsLabel = styled.label`
   margin-right: 7px;
 
@@ -110,7 +115,6 @@ const SecondsLabel = styled.label`
     margin-right: 6px;
   }
 `
-
 
 const TimeInput = styled.input`
   width: 40px;
@@ -167,7 +171,6 @@ const NotesField = styled.textarea`
   }
 `
 
-
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -182,7 +185,6 @@ const dropdownStyle = {
   })
 }
 
-
 const CreateEntry = (props) => {
   const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
@@ -192,6 +194,7 @@ const CreateEntry = (props) => {
   const [duration, setDuration] = useState(0)
   const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
+  const history = useHistory();
 
  // Sets and Processes Exercise Drop Down
   const exerciseOptions = [
@@ -233,14 +236,10 @@ const CreateEntry = (props) => {
       notes
     };    
 
-    if (date === "" && exercise === "") {
-      alert("Please enter a date and exercise!")
-    } else if (date === "" && exercise !== "") {
-      alert("Please enter a date!")
-    } else if (date !== "" && exercise === "") {
-      alert("Please enter an exercise!")
-    } else { 
-      
+    if (date === "" || exercise === "" || status === "") {
+      alert("Please include a date, exercise, and status!")
+    } else {
+
       const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
       await axios.post(airtableURL, { fields }, {
         headers: {
@@ -248,9 +247,9 @@ const CreateEntry = (props) => {
           'Content-Type': 'application/json',
         }
       });
-
       props.setFetchEntries(!props.fetchEntries)
     }  
+    history.push("/") 
   }
 
   const calculateDuration = () => {
