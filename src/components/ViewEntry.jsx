@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Link, useParams } from 'react-router-dom';
 import styled from "styled-components";
 import SubmitButton from "./SubmitButton";
@@ -46,6 +47,16 @@ const Entry = (props) => {
 
   const formattedDuration = (`${hours}:${minutes}:${seconds}`);
 
+  const handleDelete = async () => {
+    const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts/${workout.id}`;
+    await axios.delete(airtableURL, {
+      headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
+      }
+    });
+    props.setFetchEntries(!props.fetchEntries);
+  }
+
 
   return (
     <ViewContainer>
@@ -60,7 +71,7 @@ const Entry = (props) => {
         <p>Notes: {workout.fields.notes}</p>
       </div>
       <div>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
       {/* <Route path="/edit/:id">
         <EditEntry

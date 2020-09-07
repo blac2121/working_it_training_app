@@ -41,7 +41,7 @@ function App() {
             <CreateEntry fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
           </Route>
           <Route path="/exercise/:id">
-            <ViewEntry workouts={workouts} />
+            <ViewEntry workouts={workouts} fetchEntries={fetchEntries} setFetchEntries={setFetchEntries} />
           </Route>
           {/* <Route path="/edit/:id">
             <EditEntry />
