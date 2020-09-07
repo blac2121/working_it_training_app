@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -24,13 +24,27 @@ const editPencil =
 const ViewContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #4C4C4D;
+  background-color: #3A3A3A;
   width: 500px;
   margin: 30px auto;
   padding: 20px;
   color: white;
-  box-shadow: 1px 1px 1px 1px #282829;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
+
+  @media (max-width: 768px) {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+  }
+
+  @media (max-width: 320px) {
+    margin-left: 20px;
+  }
 `
+
 const ViewHeader = styled.div`
   display: flex;
   align-items: center;
@@ -45,29 +59,16 @@ const ViewTitle = styled.h3`
 const ViewDataContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: #4C4C4D;
+  box-shadow: 1px 1px 1px 1px #282829;
+  border-radius: 2px;
+  padding: 15px;
 `
 
 const ViewDataRows = styled.div`
   display: flex;
   align-items: center;
 `
-
-// const DeleteButton = styled.button`
-//   background-color: #CDCBCB; 
-//   border: none;
-//   color: #3A3A3A;
-//   padding: 10px 15px;
-//   font-size: 16px;
-//   border-radius: 2px;
-//   cursor: pointer;
-//   font-weight: 700;
-
-//   &:hover {
-//     background: #A7A5A5;
-//   }
-// `
-
-
 
 const ViewLabels = styled.label`
   font-size: 18px;
@@ -79,20 +80,63 @@ const ViewData = styled.p`
   padding-left: 10px;
 `
 
+const DeleteDiv = styled.div`
+  margin-top: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+`
+
+const NoResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3A3A3A;
+  margin: 0 auto;
+  width: 500px;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
+
+  @media (max-width: 768px) {
+    width: 500px;
+  }
+
+  @media (max-width: 425px) {
+    margin: 0 auto;
+    width: 325px;
+  }
+
+  @media (max-width: 320px) {
+    width: 315px;
+    margin-left: 20px;
+  }
+`
+
+const NoResultsText = styled.h3`
+  color: white;
+`
+
+const NoResultsDirections = styled.p`
+  color: #42C9FB;
+  font-size: 18px;
+  margin-top: 0;
+`
 
 const Entry = (props) => {
+  const history = useHistory();
   const params = useParams();
-  // const { fetchEntries, setFetchEntries, entry } = props;
 
   const workout = props.workouts.find((workout) => params.id === workout.id);
  
   if (!workout) {
-    return <h3>Looks like it's rest day!</h3>
+    return (
+      <NoResults>
+        <NoResultsText>Looks like it's rest day!</NoResultsText>
+        <NoResultsDirections>Navigate back to the home page to add a new workout.</NoResultsDirections>
+      </NoResults>
+    )
   }
 
   const dateInput = new Date(workout.fields.date.replace(/-/g, '\/'))
   const formattedDate = dateInput.toDateString()
-
 
   const durationInput = workout.fields.duration
 
@@ -110,6 +154,7 @@ const Entry = (props) => {
       }
     });
     props.setFetchEntries(!props.fetchEntries);
+    history.push("/") 
   }
 
 
@@ -139,7 +184,7 @@ const Entry = (props) => {
           <ViewData>{workout.fields.notes}</ViewData>
         </ViewDataRows>
       </ViewDataContainer>
-      <div onClick={handleDelete}>{deleteTrash}</div>
+      <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
       {/* <Route path="/edit/:id">
         <EditEntry
           workout={workout.fields}

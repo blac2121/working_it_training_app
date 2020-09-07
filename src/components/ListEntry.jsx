@@ -1,11 +1,82 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
-import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
+
 import SubmitButton from "./SubmitButton";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBiking } from "@fortawesome/free-solid-svg-icons"
+import { faRunning } from "@fortawesome/free-solid-svg-icons"
+import { faSwimmer } from "@fortawesome/free-solid-svg-icons"
+import { faWalking } from "@fortawesome/free-solid-svg-icons"
+import { faHiking } from "@fortawesome/free-solid-svg-icons"
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons"
+import { faStopwatch20 } from "@fortawesome/free-solid-svg-icons"
+import { faMusic } from "@fortawesome/free-solid-svg-icons"
+import { faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
+
+
+const cycle =
+  <FontAwesomeIcon
+    icon={faBiking}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const run =
+  <FontAwesomeIcon
+    icon={faRunning}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const swim =
+  <FontAwesomeIcon
+    icon={faSwimmer}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const walk =
+<FontAwesomeIcon
+  icon={faWalking}
+  size="2x"
+  color="#42C9FB"
+/>
+const hike =
+  <FontAwesomeIcon
+    icon={faHiking}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const dumbbell =
+  <FontAwesomeIcon
+    icon={faDumbbell}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const stopwatch =
+  <FontAwesomeIcon
+    icon={faStopwatch20}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const dance =
+  <FontAwesomeIcon
+    icon={faMusic}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const chevron =
+  <FontAwesomeIcon
+    icon={faChevronCircleRight}
+    size="2x"
+    color="white"
+  />
 
 const Main = styled.div`
   display: flex;
@@ -15,19 +86,60 @@ const Main = styled.div`
   margin: 0 auto;
   width: 600px;
   box-shadow: 1px 1px 1px 1px #1C1C1D;
+
+  @media (max-width: 768px) {
+    width: 500px;
+  }
+
+  @media (max-width: 425px) {
+    margin: 0 auto;
+    width: 325px;
+  }
+
+  @media (max-width: 320px) {
+    width: 315px;
+    margin-left: 20px;
+  }
 `
 
 const ListHeader = styled.div`
   display: flex;
   align-items: flex-end;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+  }
 `
 
 const ListTitleDiv = styled.div`
   text-align: left;
+
+  @media (max-width: 768px) {
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  @media (max-width: 425px) {
+    margin: 0 auto;
+  }
 `
 
 const ListButtonDiv = styled.div`
   margin-left: 360px;
+
+  @media (max-width: 768px) {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 425px) {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 320px) {
+    margin: 0 auto;
+  }
 `
 
 const ListTitle = styled.h3`
@@ -52,30 +164,35 @@ const EntryCard = styled.div`
     background: #4F4E4E;
     transform: scale(1.03);
   }
+
+  @media (max-width: 768px) {
+    width: 450px;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+  }
+
+  @media (max-width: 320px) {
+    width: 275px;
+  }
 `
 
 const IconEntryCard = styled.div`
   flex-grow: 1;
   text-align: center;
-  // padding-left: 20px;
+
+  @media (max-width: 320px) {
+    display: none;
+  }
 `
-
-const dumbbell =
-  <FontAwesomeIcon
-    icon={faDumbbell}
-    size="2x"
-    color="#42C9FB"
-  />
-
-  const deletetrash =
-  <FontAwesomeIcon
-    icon={faEdit}
-    size="2x"
-    color="#42C9FB"
-    />
   
 const DataEntryCard = styled.div`
   flex-grow: 2;
+
+  @media (max-width: 320px) {
+    margin-left: 10px;
+  }
 `
 
 const DataStatus = styled.p`
@@ -86,20 +203,9 @@ const ChevronEntryCard = styled.div`
   flex-grow: 1;
   cursor: pointer;
 `    
-const chevron =
-  <FontAwesomeIcon
-    icon={faChevronCircleRight}
-    size="2x"
-    color="white"
-  />
- 
 
 const ListEntry = (props) => {
 
-  // const dateInput = new Date(entry.fields.date.replace(/-/g, '\/'))
-  // const formattedDate = dateInput.toDateString()
-
- 
   return (
     <Main>
       <ListHeader>
@@ -110,22 +216,42 @@ const ListEntry = (props) => {
           <Link to="/add">
             <SubmitButton label="Add"></SubmitButton>
           </Link>
-          {deletetrash}
         </ListButtonDiv>
       </ListHeader>
       <div>
-        {props.workouts.map((entry) => (
-          <Link to={`/exercise/${entry.id}`} >
-            <EntryCard key={entry.id}>
-              <IconEntryCard>{dumbbell}</IconEntryCard>
-              <DataEntryCard>
-                <h3>{entry.fields.exercise}</h3>
-                <DataStatus>{entry.fields.status}</DataStatus>                        
-              </DataEntryCard>
-              <ChevronEntryCard>{chevron}</ChevronEntryCard>
-            </EntryCard>
-          </Link>
-        ))
+        {props.workouts.map((entry, index) => {
+          return (
+            <div key={index}>
+              {props.workouts <= 0 ? console.log("Add a workout to get started") :
+                // <div>
+                  <Link to={`/exercise/${entry.id}`} >
+                    <EntryCard key={entry.id}>
+                      {(() => {
+                        switch (entry.fields.exercise) {
+                          case "Cycle": return <IconEntryCard>{cycle}</IconEntryCard>;
+                          case "Run": return <IconEntryCard>{run}</IconEntryCard>;
+                          case "Swim": return <IconEntryCard>{swim}</IconEntryCard>;
+                          case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
+                          case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
+                          case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
+                          case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                          case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
+                          case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                          default: return <IconEntryCard>{stopwatch}</IconEntryCard>
+                        }
+                      })()}  
+                      <DataEntryCard>
+                        <h3>{entry.fields.exercise}</h3>
+                        <DataStatus>{entry.fields.status}</DataStatus>                        
+                      </DataEntryCard>
+                      <ChevronEntryCard>{chevron}</ChevronEntryCard>
+                    </EntryCard>
+                  </Link>
+                // </div>
+              }
+            </div>
+          )
+        })
         }
       </div>
     </Main>

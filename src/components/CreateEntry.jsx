@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
@@ -8,28 +9,49 @@ import SubmitButton from "./SubmitButton";
 const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #4C4C4D;
+  background-color: #3A3A3A;
   width: 500px;
   margin: 30px auto;
   padding: 20px;
   color: white;
-  box-shadow: 1px 1px 1px 1px #282829;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
+
+  @media (max-width: 768px) {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+    margin: 20px auto;
+  }
+
+  @media (max-width: 320px) {
+    width: 275px;
+    margin: 20px auto;
+  }
 `
+
 const AddHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
 `
+
 const AddTitle = styled.h3`
   color: white;
   font-size: 24px;
+  margin-bottom: 35px;
 `
 
 const AddForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 5px 25px 25px 25px;
+  padding: 20px 25px 25px 25px;
+  background-color: #4C4C4D;
+  box-shadow: 1px 1px 1px 1px #282829;
+  border-radius: 2px;
 `
 
 const DateInput = styled.div`
@@ -49,6 +71,14 @@ const DateField = styled.input`
 const ExerciseInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const Duration = styled.div`
@@ -62,23 +92,66 @@ const DurationLabel = styled.label`
   margin-bottom: 5px;
 `
 
-const TimeLable = styled.label`
+const HoursLabel = styled.label`
   margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 22px;
+  }
+`
+
+const MinutesLabel = styled.label`
+  margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 8px;
+  }
+`
+
+const SecondsLabel = styled.label`
+  margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 6px;
+  }
 `
 
 const TimeInput = styled.input`
   width: 40px;
-  heoght: 25px;
+  height: 25px;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin-top: 8px;
+
+  @media (max-width: 425px) {
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 2px;
+  }
 `
 
 const DurationInputs = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
 `
 
 const StatusInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const NotesInput = styled.div`
@@ -88,8 +161,15 @@ const NotesInput = styled.div`
 
 const NotesField = styled.textarea`
   font-family: 'Titillium Web';
-`
 
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 220px;
+  }
+`
 
 const ButtonDiv = styled.div`
   display: flex;
@@ -105,7 +185,6 @@ const dropdownStyle = {
   })
 }
 
-
 const CreateEntry = (props) => {
   const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
@@ -115,6 +194,7 @@ const CreateEntry = (props) => {
   const [duration, setDuration] = useState(0)
   const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
+  const history = useHistory();
 
  // Sets and Processes Exercise Drop Down
   const exerciseOptions = [
@@ -156,14 +236,10 @@ const CreateEntry = (props) => {
       notes
     };    
 
-    if (date === "" && exercise === "") {
-      alert("Please enter a date and exercise!")
-    } else if (date === "" && exercise !== "") {
-      alert("Please enter a date!")
-    } else if (date !== "" && exercise === "") {
-      alert("Please enter an exercise!")
-    } else { 
-      
+    if (date === "" || exercise === "" || status === "") {
+      alert("Please include a date, exercise, and status!")
+    } else {
+
       const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
       await axios.post(airtableURL, { fields }, {
         headers: {
@@ -171,9 +247,9 @@ const CreateEntry = (props) => {
           'Content-Type': 'application/json',
         }
       });
-
       props.setFetchEntries(!props.fetchEntries)
     }  
+    history.push("/") 
   }
 
   const calculateDuration = () => {
@@ -225,7 +301,7 @@ const CreateEntry = (props) => {
           </div>
           <DurationInputs>
             <div>
-              <TimeLable htmlFor="hours">Hours</TimeLable>
+              <HoursLabel htmlFor="hours">Hours</HoursLabel>
               <TimeInput
                 type="number"
                 name="hours"
@@ -236,7 +312,7 @@ const CreateEntry = (props) => {
               />                    
             </div>
             <div>
-              <TimeLable htmlFor="minutes">Minutes</TimeLable>
+              <MinutesLabel htmlFor="minutes">Minutes</MinutesLabel>
               <TimeInput
                 type="number"
                 name="minutes"
@@ -247,7 +323,7 @@ const CreateEntry = (props) => {
               />                
             </div>
             <div>
-              <TimeLable htmlFor="seconds">Seconds</TimeLable>
+              <SecondsLabel htmlFor="seconds">Seconds</SecondsLabel>
               <TimeInput
                 type="number"
                 name="seconds"
@@ -267,7 +343,6 @@ const CreateEntry = (props) => {
             <Select
               name="status"
               styles={dropdownStyle}
-              // width=300
               menuColor='black'
               defaultValue={status}
               options={statusOptions}        

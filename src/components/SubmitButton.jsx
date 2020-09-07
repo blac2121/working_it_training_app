@@ -14,6 +14,18 @@ const Button = styled.button`
   &:hover {
     background: #68BBDA;
   }
+
+  @media (max-width: 768px) {
+    width: 450px;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+  }
+
+  @media (max-width: 320px) {
+    width: 275px;
+  }
 `
 
 const SubmitButton = (props) => {
