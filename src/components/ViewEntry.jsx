@@ -1,9 +1,25 @@
 import React from "react";
 import axios from "axios";
 import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
-import SubmitButton from "./SubmitButton";
 // import EditEntry from "./EditEntry"
+
+const deleteTrash =
+  <FontAwesomeIcon
+    icon={faTrashAlt}
+    size="2x"
+    color="#282829"
+  />
+
+const editPencil =
+  <FontAwesomeIcon
+    icon={faEdit}
+    size="2x"
+    color="#42C9FB"
+  />
 
 const ViewContainer = styled.div`
   display: flex;
@@ -25,24 +41,42 @@ const ViewTitle = styled.h3`
   color: white;
   font-size: 24px;
 `
-const DeleteButton = styled.button`
-  background-color: #CDCBCB; 
-  border: none;
-  color: #3A3A3A;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: 700;
 
-  &:hover {
-    background: #A7A5A5;
-  }
+const ViewDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const ViewDataRows = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+// const DeleteButton = styled.button`
+//   background-color: #CDCBCB; 
+//   border: none;
+//   color: #3A3A3A;
+//   padding: 10px 15px;
+//   font-size: 16px;
+//   border-radius: 2px;
+//   cursor: pointer;
+//   font-weight: 700;
+
+//   &:hover {
+//     background: #A7A5A5;
+//   }
+// `
+
+
+
+const ViewLabels = styled.label`
+  font-size: 18px;
 `
 
 const ViewData = styled.p`
   color: #42C9FB;
   font-size: 18px;
+  padding-left: 10px;
 `
 
 
@@ -83,29 +117,29 @@ const Entry = (props) => {
     <ViewContainer>
       <ViewHeader>
         <ViewTitle>{workout.fields.exercise}</ViewTitle>
-        <Link to={`/edit/${workout.id}`}><SubmitButton label="Edit"></SubmitButton></Link>
+        <Link to={`/edit/${workout.id}`}>
+          <div>{editPencil}</div>
+        </Link>
       </ViewHeader>      
-      <div>
-        <div>
-          <label>Date:</label>
+      <ViewDataContainer>
+        <ViewDataRows>
+          <ViewLabels>Date:</ViewLabels>
           <ViewData>{formattedDate}</ViewData>
-        </div>
-        <div>
-          <label>Duration:</label>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Duration:</ViewLabels>
           <ViewData>{formattedDuration}</ViewData>
-        </div>
-        <div>
-          <label>Status:</label>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Status:</ViewLabels>
           <ViewData>{workout.fields.status}</ViewData>
-        </div>
-        <div>
-          <label>Notes:</label>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Notes:</ViewLabels>
           <ViewData>{workout.fields.notes}</ViewData>
-        </div>
-      </div>
-      <div>
-        <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
-      </div>
+        </ViewDataRows>
+      </ViewDataContainer>
+      <div onClick={handleDelete}>{deleteTrash}</div>
       {/* <Route path="/edit/:id">
         <EditEntry
           workout={workout.fields}
