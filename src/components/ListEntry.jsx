@@ -1,14 +1,72 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
-import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
+
 import SubmitButton from "./SubmitButton";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBiking } from "@fortawesome/free-solid-svg-icons"
+import { faRunning } from "@fortawesome/free-solid-svg-icons"
+import { faSwimmer } from "@fortawesome/free-solid-svg-icons"
+import { faWalking } from "@fortawesome/free-solid-svg-icons"
+import { faHiking } from "@fortawesome/free-solid-svg-icons"
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons"
+import { faStopwatch20 } from "@fortawesome/free-solid-svg-icons"
+import { faMusic } from "@fortawesome/free-solid-svg-icons"
+import { faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
+
+
+const cycle =
+  <FontAwesomeIcon
+    icon={faBiking}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const run =
+  <FontAwesomeIcon
+    icon={faRunning}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const swim =
+  <FontAwesomeIcon
+    icon={faSwimmer}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const walk =
+<FontAwesomeIcon
+  icon={faWalking}
+  size="2x"
+  color="#42C9FB"
+/>
+const hike =
+  <FontAwesomeIcon
+    icon={faHiking}
+    size="2x"
+    color="#42C9FB"
+  />
 
 const dumbbell =
   <FontAwesomeIcon
     icon={faDumbbell}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const stopwatch =
+  <FontAwesomeIcon
+    icon={faStopwatch20}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const dance =
+  <FontAwesomeIcon
+    icon={faMusic}
     size="2x"
     color="#42C9FB"
   />
@@ -165,7 +223,24 @@ const ListEntry = (props) => {
         {props.workouts.map((entry) => (
           <Link to={`/exercise/${entry.id}`} >
             <EntryCard key={entry.id}>
-              <IconEntryCard>{dumbbell}</IconEntryCard>
+              {/* {entry.fields.exercise === ("Strength Training" || "HIIT" || "Other")
+                ? <IconEntryCard>{dumbbell}</IconEntryCard> 
+                : <IconEntryCard>{cardio}</IconEntryCard>
+                } */}
+              {(() => {
+                switch (entry.fields.exercise) {
+                  case "Cycle": return <IconEntryCard>{cycle}</IconEntryCard>;
+                  case "Run": return <IconEntryCard>{run}</IconEntryCard>;
+                  case "Swim": return <IconEntryCard>{swim}</IconEntryCard>;
+                  case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
+                  case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
+                  case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
+                  case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                  case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
+                  case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                  default: return <IconEntryCard>{stopwatch}</IconEntryCard>
+                }
+              })()}  
               <DataEntryCard>
                 <h3>{entry.fields.exercise}</h3>
                 <DataStatus>{entry.fields.status}</DataStatus>                        
