@@ -160,7 +160,7 @@ const AddButton = styled.button`
     background: #60ADCA;
   }
 
-  @media (max-width: 425px) {
+   @media (max-width: 425px) {
     width: 275px;
     margin: 0 auto;
   }
