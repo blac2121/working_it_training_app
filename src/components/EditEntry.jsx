@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+// import { useParams, useHistory } from 'react-router-dom';
+
 import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
@@ -121,7 +123,7 @@ const EditEntry = (props) => {
   const [duration, setDuration] = useState(0)
   const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
-  const history = useHistory();
+  // const history = useHistory();
   
 
  // Sets and Processes Exercise Drop Down

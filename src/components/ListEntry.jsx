@@ -206,22 +206,21 @@ const ChevronEntryCard = styled.div`
 
 const ListEntry = (props) => {
 
-  // const listData = [...props.workouts]
-  // console.log(listData)
+  // const [data, setData] = useState([]);
 
-  const [data, setData] = useState([]);
-  console.log(props.workouts)
+  // console.log(props.workouts)
 
-  
-  // let listData = [...props.workouts]
-  // let sortedWorkouts = listData.sort((a, b) => a.fields.exercise - b.fields.exercise)
-  // setData(sortedWorkouts)
-  // console.log(data)
-  
   // useEffect(() => {
+  //   const listData = [...props.workouts]
+  //   const sortedWorkouts = listData.sort((a, b) => a.fields.exercise - b.fields.exercise)
+  //   setData(sortedWorkouts)
+  // }, []) 
 
-  // }, [])
-  
+  // console.log(data); 
+
+  const listData = [...props.workouts]
+  console.log(listData)
+
   return (
     <Main>
       <ListHeader>
@@ -235,8 +234,8 @@ const ListEntry = (props) => {
         </ListButtonDiv>
       </ListHeader>
       <div>
-        {/* {listData.sort((a, b) => a.fields.exercise - b.fields.exercise) */}
-          {props.workouts.map((entry, index) => {
+        {listData.sort((a, b) => b.fields.exercise - a.fields.exercise)
+          .map((entry, index) => {
             return (
               <div key={index}>
                 {/* {props.workouts <= 0 ? console.log("Add a workout to get started") : */}
