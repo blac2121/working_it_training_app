@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
-// import EditEntry from "./EditEntry"
 
 const deleteTrash =
   <FontAwesomeIcon
@@ -185,14 +184,6 @@ const Entry = (props) => {
         </ViewDataRows>
       </ViewDataContainer>
       <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
-      {/* <Route path="/edit/:id">
-        <EditEntry
-          workout={workout.fields}
-          hours={hours}
-          minutes={minutes}
-          seconds={seconds}
-        />       
-      </Route> */}
     </ViewContainer>
   )
 }
