@@ -248,8 +248,8 @@ const CreateEntry = (props) => {
         }
       });
       props.setFetchEntries(!props.fetchEntries)
+      history.push("/")
     }  
-    history.push("/") 
   }
 
   const calculateDuration = () => {
