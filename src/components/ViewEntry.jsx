@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
-// import EditEntry from "./EditEntry"
 
 const deleteTrash =
   <FontAwesomeIcon

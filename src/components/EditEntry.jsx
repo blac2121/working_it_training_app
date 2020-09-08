@@ -129,7 +129,7 @@ const EditEntry = (props) => {
     const [seconds, setSeconds] = useState("");
     const [duration, setDuration] = useState(0)
     const [status, setStatus] = useState("")
-    const [notes, setNotes] = useState(props.workouts.fields.notes)
+    const [notes, setNotes] = useState("")
     const history = useHistory();
   
 
@@ -202,12 +202,6 @@ const EditEntry = (props) => {
   useEffect(() => { 
     calculateDuration();
   })
-
-  // if (!props.workout) {
-  //   return (
-  //     <h4>Looks like it's rest day!</h4>
-  //   )
-  // }
 
   return (
     <AddContainer>
