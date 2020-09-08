@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
@@ -206,6 +206,21 @@ const ChevronEntryCard = styled.div`
 
 const ListEntry = (props) => {
 
+  // const [data, setData] = useState([]);
+
+  // console.log(props.workouts)
+
+  // useEffect(() => {
+  //   const listData = [...props.workouts]
+  //   const sortedWorkouts = listData.sort((a, b) => a.fields.exercise - b.fields.exercise)
+  //   setData(sortedWorkouts)
+  // }, []) 
+
+  // console.log(data); 
+
+  const listData = [...props.workouts]
+  console.log(listData)
+
   return (
     <Main>
       <ListHeader>
@@ -219,39 +234,39 @@ const ListEntry = (props) => {
         </ListButtonDiv>
       </ListHeader>
       <div>
-        {props.workouts.map((entry, index) => {
-          return (
-            <div key={index}>
-              {props.workouts <= 0 ? console.log("Add a workout to get started") :
-                // <div>
-                  <Link to={`/exercise/${entry.id}`} >
-                    <EntryCard key={entry.id}>
-                      {(() => {
-                        switch (entry.fields.exercise) {
-                          case "Cycle": return <IconEntryCard>{cycle}</IconEntryCard>;
-                          case "Run": return <IconEntryCard>{run}</IconEntryCard>;
-                          case "Swim": return <IconEntryCard>{swim}</IconEntryCard>;
-                          case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
-                          case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
-                          case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
-                          case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
-                          case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
-                          case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
-                          default: return <IconEntryCard>{stopwatch}</IconEntryCard>
-                        }
-                      })()}  
-                      <DataEntryCard>
-                        <h3>{entry.fields.exercise}</h3>
-                        <DataStatus>{entry.fields.status}</DataStatus>                        
-                      </DataEntryCard>
-                      <ChevronEntryCard>{chevron}</ChevronEntryCard>
-                    </EntryCard>
-                  </Link>
-                // </div>
-              }
-            </div>
-          )
-        })
+        {listData.sort((a, b) => b.fields.exercise - a.fields.exercise)
+          .map((entry, index) => {
+            return (
+              <div key={index}>
+                {/* {props.workouts <= 0 ? console.log("Add a workout to get started") : */}
+                 <div>
+                    <Link to={`/exercise/${entry.id}`} >
+                      <EntryCard key={entry.id}>
+                        {(() => {
+                          switch (entry.fields.exercise) {
+                            case "Cycle": return <IconEntryCard>{cycle}</IconEntryCard>;
+                            case "Run": return <IconEntryCard>{run}</IconEntryCard>;
+                            case "Swim": return <IconEntryCard>{swim}</IconEntryCard>;
+                            case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
+                            case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
+                            case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
+                            case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                            case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
+                            case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                            default: return <IconEntryCard>{stopwatch}</IconEntryCard>
+                          }
+                        })()}  
+                        <DataEntryCard>
+                          <h3>{entry.fields.exercise}</h3>
+                          <DataStatus>{entry.fields.status}</DataStatus>                        
+                        </DataEntryCard>
+                        <ChevronEntryCard>{chevron}</ChevronEntryCard>
+                      </EntryCard>
+                    </Link>
+                  </div>
+              </div>
+            )
+          })
         }
       </div>
     </Main>
