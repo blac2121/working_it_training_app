@@ -201,8 +201,18 @@ const EditEntry = (props) => {
 
   useEffect(() => {
     if (workout) {
+      const durationInput = workout.fields.duration
+      let hours = Math.floor(durationInput / 3600)
+      let minutes = Math.floor((durationInput - (hours * 3600)) / 60);
+      let seconds = durationInput - (hours * 3600) - (minutes * 60);
+
       setDate(workout.fields.date)
       setExercise(workout.fields.exercise)
+
+      setHours(hours)
+      setMinutes(minutes)
+      setSeconds(seconds)
+
       setStatus(workout.fields.status)
       setNotes(workout.fields.notes)
     }
