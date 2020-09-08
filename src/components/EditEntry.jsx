@@ -178,6 +178,7 @@ const EditEntry = (props) => {
         }
       });
       props.setFetchEntries(!props.fetchEntries)
+      history.push(`/exercise/${workout.id}`)
     }  
   }
 
