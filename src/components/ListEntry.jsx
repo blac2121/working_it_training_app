@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
@@ -206,7 +206,21 @@ const ChevronEntryCard = styled.div`
 
 const ListEntry = (props) => {
 
-  const listData = [...props.workouts]
+  // const listData = [...props.workouts]
+  // console.log(listData)
+
+  const [data, setData] = useState([]);
+  console.log(props.workouts)
+
+  
+  // let listData = [...props.workouts]
+  // let sortedWorkouts = listData.sort((a, b) => a.fields.exercise - b.fields.exercise)
+  // setData(sortedWorkouts)
+  // console.log(data)
+  
+  // useEffect(() => {
+
+  // }, [])
   
   return (
     <Main>
@@ -221,8 +235,8 @@ const ListEntry = (props) => {
         </ListButtonDiv>
       </ListHeader>
       <div>
-        {listData.sort((a, b) => a.fields.exercise - b.fields.exercise)
-          .map((entry, index) => {
+        {/* {listData.sort((a, b) => a.fields.exercise - b.fields.exercise) */}
+          {props.workouts.map((entry, index) => {
             return (
               <div key={index}>
                 {/* {props.workouts <= 0 ? console.log("Add a workout to get started") : */}
