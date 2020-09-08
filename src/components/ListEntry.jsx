@@ -126,7 +126,7 @@ const ListTitleDiv = styled.div`
   }
 
   @media (max-width: 425px) {
-    margin: 0 auto;
+    text-align: center;
   }
 `
 
@@ -138,10 +138,30 @@ const ListButtonDiv = styled.div`
   }
 
   @media (max-width: 425px) {
-    margin: 0 auto;
+    margin-left: 26px;
   }
 
   @media (max-width: 320px) {
+    margin: 0 auto;
+  }
+`
+
+const AddButton = styled.button`
+  background-color: #42C9FB; 
+  border: none;
+  color: #3A3A3A;
+  padding: 15px 32px;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background: #60ADCA;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
     margin: 0 auto;
   }
 `
@@ -218,7 +238,7 @@ const ListEntry = (props) => {
         </ListTitleDiv>
         <ListButtonDiv>
           <Link to="/add">
-            <SubmitButton label="Add"></SubmitButton>
+            <AddButton>Add</AddButton>
           </Link>
         </ListButtonDiv>
       </ListHeader>

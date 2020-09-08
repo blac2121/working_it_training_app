@@ -193,7 +193,7 @@ const Cancel = styled.button`
   }
 
   @media (max-width: 425px) {
-    width: 250px;
+    width: 225px;
     margin-bottom: 15px;
   }
 `
