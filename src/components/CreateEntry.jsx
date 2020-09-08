@@ -16,8 +16,7 @@ const AddContainer = styled.div`
   box-shadow: 1px 1px 1px 1px #1C1C1D;
 
   @media (max-width: 768px) {
-    width: 400px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 
   @media (max-width: 425px) {
@@ -41,16 +40,12 @@ const AddHeader = styled.div`
 const AddTitle = styled.h3`
   color: white;
   font-size: 24px;
-  margin-bottom: 35px;
 `
 
 const AddForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 20px 25px 25px 25px;
-  background-color: #4C4C4D;
-  box-shadow: 1px 1px 1px 1px #282829;
-  border-radius: 2px;
 `
 
 const DateInput = styled.div`
@@ -64,7 +59,7 @@ const DateField = styled.input`
   width: 200px;
   font-family: 'Titillium Web';
   padding-left: 10px;
-  padding-right: 01px;
+  padding-right: 10px;
 `
 
 const ExerciseInput = styled.div`
@@ -173,6 +168,16 @@ const NotesField = styled.textarea`
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-between;
+
+  // @media (max-width: 768px) {
+  //   width: 440px;
+  //    align-items: center;
+  // }
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    width: 220px;
+  }
 `
 
 const Cancel = styled.button`
@@ -189,16 +194,9 @@ const Cancel = styled.button`
     background: #848383;
   }
 
-  @media (max-width: 768px) {
-    width: 450px;
-  }
-
   @media (max-width: 425px) {
-    width: 275px;
-  }
-
-  @media (max-width: 320px) {
-    width: 275px;
+    width: 250px;
+    margin-bottom: 15px;
   }
 `
 

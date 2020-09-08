@@ -92,7 +92,7 @@ const Main = styled.div`
   }
 
   @media (max-width: 425px) {
-    margin: 0 auto;
+    margin: 20px auto;
     width: 325px;
   }
 
@@ -107,8 +107,8 @@ const ListHeader = styled.div`
   align-items: flex-end;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
+    // flex-direction: column;
+    // align-items: flex-start;
     width: 500px;
   }
 `
@@ -130,7 +130,7 @@ const ListButtonDiv = styled.div`
   margin-left: 360px;
 
   @media (max-width: 768px) {
-    margin: 0 auto;
+    margin-left: 270px;
   }
 
   @media (max-width: 425px) {
