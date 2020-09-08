@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
 import SubmitButton from "./SubmitButton";
-// import CancelButton from "./CancelButton";
 
 const AddContainer = styled.div`
   display: flex;
@@ -17,8 +16,7 @@ const AddContainer = styled.div`
   box-shadow: 1px 1px 1px 1px #1C1C1D;
 
   @media (max-width: 768px) {
-    width: 400px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 
   @media (max-width: 425px) {
@@ -42,16 +40,12 @@ const AddHeader = styled.div`
 const AddTitle = styled.h3`
   color: white;
   font-size: 24px;
-  margin-bottom: 35px;
 `
 
 const AddForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 20px 25px 25px 25px;
-  background-color: #4C4C4D;
-  box-shadow: 1px 1px 1px 1px #282829;
-  border-radius: 2px;
 `
 
 const DateInput = styled.div`
@@ -65,7 +59,7 @@ const DateField = styled.input`
   width: 200px;
   font-family: 'Titillium Web';
   padding-left: 10px;
-  padding-right: 01px;
+  padding-right: 10px;
 `
 
 const ExerciseInput = styled.div`
@@ -173,7 +167,37 @@ const NotesField = styled.textarea`
 
 const ButtonDiv = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  // @media (max-width: 768px) {
+  //   width: 440px;
+  //    align-items: center;
+  // }
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    width: 220px;
+  }
+`
+
+const Cancel = styled.button`
+  background-color: #A7A5A5; 
+  border: none;
+  color: #3A3A3A;
+  padding: 15px 24px;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background: #848383;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+    margin-bottom: 15px;
+  }
 `
 
 const dropdownStyle = {
@@ -204,7 +228,7 @@ const CreateEntry = (props) => {
     { value: 'Walk', label: 'Walk' },
     { value: 'Hiking', label: 'Hiking' }, 
     { value: 'Strength Training', label: 'Strength Training' },
-    { value: 'High Intensity Interval Training', label: 'High Intensity Interval Training' },
+    { value: 'HIIT', label: 'HIIT' },
     { value: 'Dance', label: 'Dance' },
     { value: 'Other', label: 'Other' },
   ];
@@ -250,6 +274,10 @@ const CreateEntry = (props) => {
       props.setFetchEntries(!props.fetchEntries)
       history.push("/")
     }  
+  }
+
+  const handleCancel = () => {
+    history.push("/")
   }
 
   const calculateDuration = () => {
@@ -365,8 +393,7 @@ const CreateEntry = (props) => {
           </div>
         </NotesInput>
         <ButtonDiv>
-          {/* <CancelButton label="Cancel" handleClick="handleReset"></CancelButton> */}
-          {/* <button type="reset" onClick={handleReset}>Cancel</button> */}
+          <Cancel onClick={handleCancel}>Cancel</Cancel>
           <SubmitButton label="Add" handleClick="onSubmit"></SubmitButton>
         </ButtonDiv>
       </AddForm>  

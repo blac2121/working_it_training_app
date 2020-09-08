@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
-// import { useParams, useHistory } from 'react-router-dom';
-
+import { useParams, useHistory } from 'react-router-dom';
 import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
 import SubmitButton from "./SubmitButton";
-// import CancelButton from "./CancelButton";
 
 const AddContainer = styled.div`
   display: flex;
@@ -17,6 +14,20 @@ const AddContainer = styled.div`
   padding: 20px;
   color: white;
   box-shadow: 1px 1px 1px 1px #282829;
+
+  @media (max-width: 768px) {
+    margin: 20px auto;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+    margin: 20px auto;
+  }
+
+  @media (max-width: 320px) {
+    width: 275px;
+    margin: 20px auto;
+  }
 `
 const AddHeader = styled.div`
   display: flex;
@@ -46,12 +57,20 @@ const DateField = styled.input`
   width: 200px;
   font-family: 'Titillium Web';
   padding-left: 10px;
-  padding-right: 01px;
+  padding-right: 10px;
 `
 
 const ExerciseInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const Duration = styled.div`
@@ -65,23 +84,66 @@ const DurationLabel = styled.label`
   margin-bottom: 5px;
 `
 
-const TimeLable = styled.label`
+const HoursLabel = styled.label`
   margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 22px;
+  }
+`
+
+const MinutesLabel = styled.label`
+  margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 8px;
+  }
+`
+
+const SecondsLabel = styled.label`
+  margin-right: 7px;
+
+  @media (max-width: 425px) {
+    margin-right: 6px;
+  }
 `
 
 const TimeInput = styled.input`
   width: 40px;
-  heoght: 25px;
+  height: 25px;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin-top: 8px;
+
+  @media (max-width: 425px) {
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 2px;
+  }
 `
 
 const DurationInputs = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
 `
 
 const StatusInput = styled.div`
   margin-bottom: 20px;
   width: 275px;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const NotesInput = styled.div`
@@ -91,12 +153,49 @@ const NotesInput = styled.div`
 
 const NotesField = styled.textarea`
   font-family: 'Titillium Web';
-`
 
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 220px;
+  }
+`
 
 const ButtonDiv = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 440px;
+    align-items: center;
+  }
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    width: 220px;
+  }
+`
+
+const Cancel = styled.button`
+  background-color: #A7A5A5; 
+  border: none;
+  color: #3A3A3A;
+  padding: 15px 24px;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background: #848383;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+    margin-bottom: 15px;
+  }
 `
 
 const dropdownStyle = {
@@ -109,12 +208,10 @@ const dropdownStyle = {
 }
 
 
-
 const EditEntry = (props) => {
   const params = useParams();
 
   const [workout, setWorkout] = useState()
-
   const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
   const [hours, setHours] = useState("");
@@ -123,7 +220,7 @@ const EditEntry = (props) => {
   const [duration, setDuration] = useState(0)
   const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
-  // const history = useHistory();
+  const history = useHistory();
   
 
  // Sets and Processes Exercise Drop Down
@@ -132,14 +229,10 @@ const EditEntry = (props) => {
     { value: 'Run', label: 'Run' },
     { value: 'Swim', label: 'Swim' },
     { value: 'Walk', label: 'Walk' },
-    { value: 'Rower', label: 'Rower' },
-    { value: 'Elliptical', label: 'Elliptical' },
-    { value: 'High Intensity Interval Training', label: 'High Intensity Interval Training' },
-    { value: 'Stair Stepper', label: 'Stair Stepper' },
-    { value: 'Hiking', label: 'Hiking' },
-    { value: 'Yoga', label: 'Yoga' },
-    { value: 'Dance', label: 'Dance' },
+    { value: 'Hiking', label: 'Hiking' }, 
     { value: 'Strength Training', label: 'Strength Training' },
+    { value: 'HIIT', label: 'HIIT' },
+    { value: 'Dance', label: 'Dance' },
     { value: 'Other', label: 'Other' },
   ];
 
@@ -185,12 +278,18 @@ const EditEntry = (props) => {
         }
       });
       props.setFetchEntries(!props.fetchEntries)
+      history.push(`/exercise/${workout.id}`)
     }  
+  }
+
+  const handleCancel = () => {
+    history.push(`/exercise/${workout.id}`)
   }
 
   const calculateDuration = () => {
     setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
   }
+
 
   useEffect(() => { 
     calculateDuration();
@@ -199,26 +298,29 @@ const EditEntry = (props) => {
   useEffect(() => {
     let work = props.workouts.find((x) => params.id === x.id);
     setWorkout(work)
-  }, []) // evaluating if this condition changed, if so use it. this makes it a component did mount
+  }, []) 
 
   useEffect(() => {
     if (workout) {
+
       const durationInput = workout.fields.duration
       let hours = Math.floor(durationInput / 3600)
       let minutes = Math.floor((durationInput - (hours * 3600)) / 60);
       let seconds = durationInput - (hours * 3600) - (minutes * 60);
 
+      // for (let key in status) {
+      //   key === "value" && setStatus(workout.fields.status[key])
+      // }
+
       setDate(workout.fields.date)
       setExercise(workout.fields.exercise)
-
       setHours(hours)
       setMinutes(minutes)
       setSeconds(seconds)
-
       setStatus(workout.fields.status)
       setNotes(workout.fields.notes)
     }
-  }, [workout]) //checking for state to change in workout
+  }, [workout]) 
 
   return (
     <AddContainer>
@@ -260,7 +362,7 @@ const EditEntry = (props) => {
           </div>
           <DurationInputs>
             <div>
-              <TimeLable htmlFor="hours">Hours</TimeLable>
+              <HoursLabel htmlFor="hours">Hours</HoursLabel>
               <TimeInput
                 type="number"
                 name="hours"
@@ -271,7 +373,7 @@ const EditEntry = (props) => {
               />                    
             </div>
             <div>
-              <TimeLable htmlFor="minutes">Minutes</TimeLable>
+              <MinutesLabel htmlFor="minutes">Minutes</MinutesLabel>
               <TimeInput
                 type="number"
                 name="minutes"
@@ -282,7 +384,7 @@ const EditEntry = (props) => {
               />                
             </div>
             <div>
-              <TimeLable htmlFor="seconds">Seconds</TimeLable>
+              <SecondsLabel htmlFor="seconds">Seconds</SecondsLabel>
               <TimeInput
                 type="number"
                 name="seconds"
@@ -302,7 +404,6 @@ const EditEntry = (props) => {
             <Select
               name="status"
               styles={dropdownStyle}
-              // width=300
               menuColor='black'
               defaultValue={status}
               options={statusOptions}        
@@ -325,8 +426,7 @@ const EditEntry = (props) => {
           </div>
         </NotesInput>
         <ButtonDiv>
-          {/* <CancelButton label="Cancel" handleClick="handleReset"></CancelButton> */}
-          {/* <button type="reset" onClick={handleReset}>Cancel</button> */}
+          <Cancel onClick={handleCancel}>Cancel</Cancel>
           <SubmitButton label="Save" handleClick="onSubmit"></SubmitButton>
         </ButtonDiv>
       </AddForm>  
