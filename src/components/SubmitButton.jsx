@@ -12,7 +12,7 @@ const Button = styled.button`
   font-weight: 700;
 
   &:hover {
-    background: #68BBDA;
+    background: #60ADCA;
   }
 
   @media (max-width: 768px) {

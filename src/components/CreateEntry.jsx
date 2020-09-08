@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 import Select from 'react-select';
 import SubmitButton from "./SubmitButton";
-// import CancelButton from "./CancelButton";
 
 const AddContainer = styled.div`
   display: flex;
@@ -173,7 +172,34 @@ const NotesField = styled.textarea`
 
 const ButtonDiv = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+`
+
+const Cancel = styled.button`
+  background-color: #A7A5A5; 
+  border: none;
+  color: #3A3A3A;
+  padding: 15px 24px;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background: #848383;
+  }
+
+  @media (max-width: 768px) {
+    width: 450px;
+  }
+
+  @media (max-width: 425px) {
+    width: 275px;
+  }
+
+  @media (max-width: 320px) {
+    width: 275px;
+  }
 `
 
 const dropdownStyle = {
@@ -204,7 +230,7 @@ const CreateEntry = (props) => {
     { value: 'Walk', label: 'Walk' },
     { value: 'Hiking', label: 'Hiking' }, 
     { value: 'Strength Training', label: 'Strength Training' },
-    { value: 'High Intensity Interval Training', label: 'High Intensity Interval Training' },
+    { value: 'HIIT', label: 'HIIT' },
     { value: 'Dance', label: 'Dance' },
     { value: 'Other', label: 'Other' },
   ];
@@ -250,6 +276,10 @@ const CreateEntry = (props) => {
       props.setFetchEntries(!props.fetchEntries)
       history.push("/")
     }  
+  }
+
+  const handleCancel = () => {
+    history.push("/")
   }
 
   const calculateDuration = () => {
@@ -365,8 +395,7 @@ const CreateEntry = (props) => {
           </div>
         </NotesInput>
         <ButtonDiv>
-          {/* <CancelButton label="Cancel" handleClick="handleReset"></CancelButton> */}
-          {/* <button type="reset" onClick={handleReset}>Cancel</button> */}
+          <Cancel onClick={handleCancel}>Cancel</Cancel>
           <SubmitButton label="Add" handleClick="onSubmit"></SubmitButton>
         </ButtonDiv>
       </AddForm>  

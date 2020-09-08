@@ -206,10 +206,6 @@ const ChevronEntryCard = styled.div`
 
 const ListEntry = (props) => {
 
-  const listData = [...props.workouts]
-  console.log(listData)
-
-
   return (
     <Main>
       <ListHeader>
@@ -237,7 +233,7 @@ const ListEntry = (props) => {
                         case "Walk": return <IconEntryCard>{walk}</IconEntryCard>;
                         case "Hiking": return <IconEntryCard>{hike}</IconEntryCard>;
                         case "Strength Training": return <IconEntryCard>{dumbbell}</IconEntryCard>;                  
-                        case "High Intensity Interval Training": return <IconEntryCard>{stopwatch}</IconEntryCard>;
+                        case "HIIT": return <IconEntryCard>{stopwatch}</IconEntryCard>;
                         case "Dance": return <IconEntryCard>{dance}</IconEntryCard>;
                         case "Other": return <IconEntryCard>{stopwatch}</IconEntryCard>;
                         default: return <IconEntryCard>{stopwatch}</IconEntryCard>
