@@ -185,14 +185,6 @@ const Entry = (props) => {
         </ViewDataRows>
       </ViewDataContainer>
       <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
-      {/* <Route path="/edit/:id">
-        <EditEntry
-          workout={workout.fields}
-          hours={hours}
-          minutes={minutes}
-          seconds={seconds}
-        />       
-      </Route> */}
     </ViewContainer>
   )
 }
