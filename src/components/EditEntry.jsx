@@ -107,30 +107,21 @@ const dropdownStyle = {
 }
 
 
+
 const EditEntry = (props) => {
   const params = useParams();
 
-  const workout = props.workouts.find((workout) => params.id === workout.id);
+  const [workout, setWorkout] = useState()
 
-  // const [date, setDate] = useState(workout.fields.date);
-  // const [exercise, setExercise] = useState(workout.fields.exercise);
-  // const [hours, setHours] = useState("");
-  // const [minutes, setMinutes] = useState("");
-  // const [seconds, setSeconds] = useState("");
-  // const [duration, setDuration] = useState(workout.fields.duration)
-  // const [status, setStatus] = useState(workout.fields.status)
-  // const [notes, setNotes] = useState(workout.fields.notes)
-
-  
-    const [date, setDate] = useState("");
-    const [exercise, setExercise] = useState("");
-    const [hours, setHours] = useState("");
-    const [minutes, setMinutes] = useState("");
-    const [seconds, setSeconds] = useState("");
-    const [duration, setDuration] = useState(0)
-    const [status, setStatus] = useState("")
-    const [notes, setNotes] = useState("")
-    const history = useHistory();
+  const [date, setDate] = useState("");
+  const [exercise, setExercise] = useState("");
+  const [hours, setHours] = useState("");
+  const [minutes, setMinutes] = useState("");
+  const [seconds, setSeconds] = useState("");
+  const [duration, setDuration] = useState(0)
+  const [status, setStatus] = useState("")
+  const [notes, setNotes] = useState("")
+  const history = useHistory();
   
 
  // Sets and Processes Exercise Drop Down
@@ -202,6 +193,20 @@ const EditEntry = (props) => {
   useEffect(() => { 
     calculateDuration();
   })
+
+  useEffect(() => {
+    let work = props.workouts.find((x) => params.id === x.id);
+    setWorkout(work)
+  }, []) // evaluating if this condition changed, if so use it. this makes it a component did mount
+
+  useEffect(() => {
+    if (workout) {
+      setDate(workout.fields.date)
+      setExercise(workout.fields.exercise)
+      setStatus(workout.fields.status)
+      setNotes(workout.fields.notes)
+    }
+  }, [workout]) //checking for state to change in workout
 
   return (
     <AddContainer>
