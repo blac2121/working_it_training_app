@@ -1,10 +1,12 @@
 import React from "react";
+import { Link, useParams, useHistory } from "react-router-dom";
+
 import axios from "axios";
-import { Link, useParams, useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
 
 const deleteTrash =
   <FontAwesomeIcon
