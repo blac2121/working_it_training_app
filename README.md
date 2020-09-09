@@ -64,7 +64,9 @@ Table 2:
 7. Workout graphs
 
 #### Component Libraries
-Considering use of [FontAwesome's Icon Library](https://www.npmjs.com/package/@fortawesome/react-fontawesome)
+1. [FontAwesome's Icon Library](https://www.npmjs.com/package/@fortawesome/react-fontawesome)
+2. [React-Select](https://react-select.com/home)
+
 
 ## SWOT Analysis
 
