@@ -57,10 +57,10 @@ Table 2:
 
 1. Edit workout
 2. Delete workout
-3. More fields > average heart rate, calories burned
+3. Additional fields: average heart rate, calories burned
 4. Home page: Blank State
-5. user login 
-6. create workout templates
+5. User Login 
+6. Enable workout templates
 7. Workout graphs
 
 #### Component Libraries

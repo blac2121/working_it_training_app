@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBiking, faRunning, faSwimmer, faWalking, faHiking, faDumbbell, faStopwatch20, faMusic, faChevronCircleRight  } from "@fortawesome/free-solid-svg-icons"
+import {
+  faBiking, faRunning, faSwimmer, faWalking, 
+  faHiking, faDumbbell, faStopwatch20, faMusic, 
+  faChevronCircleRight, faArrowUp, faArrowDown, faMinus
+} from "@fortawesome/free-solid-svg-icons";
+  
 
 const cycle =
   <FontAwesomeIcon
@@ -67,6 +72,28 @@ const chevron =
     size="2x"
     color="white"
   />
+
+const UpArrow =
+  <FontAwesomeIcon
+    icon={faArrowUp}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const DownArrow =
+  <FontAwesomeIcon
+    icon={faArrowDown}
+    size="2x"
+    color="#42C9FB"
+  />
+
+const Minus =
+  <FontAwesomeIcon
+    icon={faMinus}
+    size="2x"
+    color="#42C9FB"
+  />
+
 
 const Main = styled.div`
   display: flex;
