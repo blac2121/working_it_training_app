@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBiking } from "@fortawesome/free-solid-svg-icons"
-import { faRunning } from "@fortawesome/free-solid-svg-icons"
-import { faSwimmer } from "@fortawesome/free-solid-svg-icons"
-import { faWalking } from "@fortawesome/free-solid-svg-icons"
-import { faHiking } from "@fortawesome/free-solid-svg-icons"
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons"
-import { faStopwatch20 } from "@fortawesome/free-solid-svg-icons"
-import { faMusic } from "@fortawesome/free-solid-svg-icons"
-import { faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBiking, faRunning, faSwimmer, faWalking, faHiking, faDumbbell, faStopwatch20, faMusic, faChevronCircleRight  } from "@fortawesome/free-solid-svg-icons"
 
 const cycle =
   <FontAwesomeIcon
