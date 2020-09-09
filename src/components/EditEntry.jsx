@@ -244,7 +244,7 @@ const EditEntry = (props) => {
 
   // Sets and Processes Status Drop Down
   const statusOptions = [
-    { value: "Ready for a Challenge", label: "Ready for a Challenge" },
+    { value: "Not Challenging", label: "Ready for a Challenge" },
     { value: "Still Challenging", label: "Still Challenging" },
     { value: "Too Challenging", label: "Too Challenging" },
   ];
@@ -310,10 +310,6 @@ const EditEntry = (props) => {
       let minutes = Math.floor((durationInput - (hours * 3600)) / 60);
       let seconds = durationInput - (hours * 3600) - (minutes * 60);
 
-      // for (let key in status) {
-      //   key === "value" && setStatus(workout.fields.status[key])
-      // }
-
       setDate(workout.fields.date)
       setExercise(workout.fields.exercise)
       setHours(hours)
@@ -353,6 +349,7 @@ const EditEntry = (props) => {
               styles={dropdownStyle}
               menuColor='black'
               defaultValue={exercise}
+              placeholder={exercise}
               options={exerciseOptions}        
               onChange={setExercise}
             />                      
@@ -408,6 +405,7 @@ const EditEntry = (props) => {
               styles={dropdownStyle}
               menuColor='black'
               defaultValue={status}
+              placeholder={status}
               options={statusOptions}        
               onChange={setStatus}
             />              

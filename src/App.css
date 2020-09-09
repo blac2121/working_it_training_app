@@ -12,7 +12,13 @@ a:link {
   .App {
     align-items: center;
   }
-  main {
-    margin: auto;
-  }  
+ 
+  .exercise-icon {
+    font-size: 10vw;
+  }
+
+  .chevron-icon {
+    font-size: 6vw;
+  }
+
 }
