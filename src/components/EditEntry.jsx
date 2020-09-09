@@ -31,12 +31,14 @@ const AddContainer = styled.div`
     margin: 20px auto;
   }
 `
+
 const AddHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
 `
+
 const AddTitle = styled.h3`
   color: white;
   font-size: 24px;

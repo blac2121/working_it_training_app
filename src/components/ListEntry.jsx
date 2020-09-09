@@ -192,6 +192,15 @@ const IconEntryCard = styled.div`
   }
 `
 
+const DataEntryCard = styled.div`
+  width: 275px;
+
+  @media (max-width: 320px) {
+    width: 295px;
+    padding-left: 50px;
+  }
+`
+
 const DataTitleCard = styled.h3`
   font-size: 24px;
   margin-bottom: 0px;
@@ -201,14 +210,6 @@ const DataTitleCard = styled.h3`
   }
 `
   
-const DataEntryCard = styled.div`
-  width: 275px;
-
-  @media (max-width: 320px) {
-    width: 295px;
-  }
-`
-
 const DataStatus = styled.p`
   font-style: italic;
   font-size: 18px;
@@ -275,8 +276,8 @@ const ListEntry = (props) => {
                       {(() => {
                         switch (entry.fields.status) {
                           case "Not Challenging": return <DataStatus>{drop} {entry.fields.status}</DataStatus>;
-                          case "Still Challenging": return <DataStatus>{drop}{drop} {entry.fields.status}</DataStatus>;
-                          case "Too Challenging": return <DataStatus>{drop}{drop}{drop} {entry.fields.status}</DataStatus>;
+                          case "Still Challenging": return <DataStatus>{drop} {drop} {entry.fields.status}</DataStatus>;
+                          case "Too Challenging": return <DataStatus>{drop} {drop} {drop} {entry.fields.status}</DataStatus>;
                           default: return <StatusEntryCard></StatusEntryCard>
                         }
                       })()}
