@@ -97,16 +97,13 @@ const Main = styled.div`
   margin: 0px auto;
   width: 600px;
   box-shadow: 1px 1px 1px 1px #1C1C1D;
-
   @media (max-width: 768px) {
     width: 500px;
   }
-
   @media (max-width: 425px) {
     margin: 5px auto;
     width: 325px;
   }
-
   @media (max-width: 320px) {
     width: 315px;
     margin-left: 20px;
@@ -118,11 +115,9 @@ const ListHeader = styled.div`
   justify-content: space-between;
   width: 500px;
   align-items: center;
-
   @media (max-width: 768px) {
     width: 450px;
   }
-
   @media (max-width: 425px) {
     flex-direction: column;
   }
@@ -137,11 +132,9 @@ const AddButton = styled.button`
   border-radius: 2px;
   cursor: pointer;
   font-weight: 700;
-
   &:hover {
     background: #60ADCA;
   }
-
    @media (max-width: 425px) {
     width: 275px;
   }
@@ -164,20 +157,16 @@ const EntryCard = styled.div`
   color: white;
   transition: all .2s ease-in-out;
   border-radius: 2px;
-
   &:hover {
     background: #4F4E4E;
     transform: scale(1.03);
   }
-
   @media (max-width: 768px) {
     width: 450px;
   }
-
   @media (max-width: 425px) {
     width: 275px;
   }
-
   @media (max-width: 320px) {
     width: 275px;
   }
@@ -186,7 +175,6 @@ const EntryCard = styled.div`
 const IconEntryCard = styled.div`
   width: 125px;
   text-align: center;
-
   @media (max-width: 320px) {
     display: none;
   }
@@ -195,7 +183,6 @@ const IconEntryCard = styled.div`
 const DataTitleCard = styled.h3`
   font-size: 24px;
   margin-bottom: 0px;
-
   @media (max-width: 425px) {
     font-size: 20px;
   }
@@ -203,7 +190,6 @@ const DataTitleCard = styled.h3`
   
 const DataEntryCard = styled.div`
   width: 275px;
-
   @media (max-width: 320px) {
     width: 295px;
   }
@@ -212,7 +198,6 @@ const DataEntryCard = styled.div`
 const DataStatus = styled.p`
   font-style: italic;
   font-size: 18px;
-
   @media (max-width: 425px) {
     font-size: 16px;
   }
@@ -220,7 +205,6 @@ const DataStatus = styled.p`
 
 const StatusEntryCard = styled.div`
   flex-grow: 1;
-
   @media (max-width: 320px) {
     margin-left: 10px;
   }
@@ -229,7 +213,6 @@ const StatusEntryCard = styled.div`
 const ChevronEntryCard = styled.div`
   width: 100px;
   cursor: pointer;
-
   @media (max-width: 425px) {
     width: 75px;
   }
@@ -275,8 +258,8 @@ const ListEntry = (props) => {
                       {(() => {
                         switch (entry.fields.status) {
                           case "Not Challenging": return <DataStatus>{drop} {entry.fields.status}</DataStatus>;
-                          case "Still Challenging": return <DataStatus>{drop}{drop} {entry.fields.status}</DataStatus>;
-                          case "Too Challenging": return <DataStatus>{drop}{drop}{drop} {entry.fields.status}</DataStatus>;
+                          case "Still Challenging": return <DataStatus>{drop} {drop} {entry.fields.status}</DataStatus>;
+                          case "Too Challenging": return <DataStatus>{drop} {drop} {drop} {entry.fields.status}</DataStatus>;
                           default: return <StatusEntryCard></StatusEntryCard>
                         }
                       })()}
@@ -292,5 +275,4 @@ const ListEntry = (props) => {
     </Main>
   )
 }
-
 export default ListEntry;
