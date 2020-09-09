@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
-import SubmitButton from "./SubmitButton";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBiking } from "@fortawesome/free-solid-svg-icons"
 import { faRunning } from "@fortawesome/free-solid-svg-icons"
@@ -243,7 +241,7 @@ const ListEntry = (props) => {
         </ListButtonDiv>
       </ListHeader>
       <div>
-        {props.workouts.sort((a, b) => a.fields.date.localeCompare(b.fields.date))
+        {props.workouts.sort((a, b) => b.fields.date.localeCompare(a.fields.date))
           .map((entry, index) => {
             return (
               <div key={index}>
