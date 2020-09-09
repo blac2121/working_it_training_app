@@ -215,15 +215,15 @@ const dropdownStyle = {
 const EditEntry = (props) => {
   const params = useParams();
 
-  const [workout, setWorkout] = useState()
+  const [workout, setWorkout] = useState();
   const [date, setDate] = useState("");
   const [exercise, setExercise] = useState("");
   const [hours, setHours] = useState("");
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
-  const [duration, setDuration] = useState(0)
-  const [status, setStatus] = useState("")
-  const [notes, setNotes] = useState("")
+  const [duration, setDuration] = useState(0);
+  const [status, setStatus] = useState("");
+  const [notes, setNotes] = useState("");
   const history = useHistory();
   
 

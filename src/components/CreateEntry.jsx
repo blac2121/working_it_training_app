@@ -217,9 +217,9 @@ const CreateEntry = (props) => {
   const [hours, setHours] = useState("");
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
-  const [duration, setDuration] = useState(0)
-  const [status, setStatus] = useState("")
-  const [notes, setNotes] = useState("")
+  const [duration, setDuration] = useState(0);
+  const [status, setStatus] = useState("");
+  const [notes, setNotes] = useState("");
   const history = useHistory();
 
  // Sets and Processes Exercise Drop Down
