@@ -242,7 +242,7 @@ const CreateEntry = (props) => {
 
   // Sets and Processes Status Drop Down
   const statusOptions = [
-    { value: "Ready for a Challenge", label: "Ready for a Challenge" },
+    { value: "Not Challenging", label: "Ready for a Challenge" },
     { value: "Still Challenging", label: "Still Challenging" },
     { value: "Too Challenging", label: "Too Challenging" },
   ];
@@ -320,7 +320,7 @@ const CreateEntry = (props) => {
               styles={dropdownStyle}
               menuColor='black'
               defaultValue={exercise}
-              options={exerciseOptions}        
+              options={exerciseOptions}
               onChange={setExercise}
             />                      
           </div>

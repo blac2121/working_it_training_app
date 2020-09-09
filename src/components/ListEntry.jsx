@@ -7,63 +7,77 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBiking, faRunning, faSwimmer, faWalking, 
   faHiking, faDumbbell, faStopwatch20, faMusic, 
-  faChevronCircleRight, faArrowUp, faArrowDown, faMinus
+  faChevronCircleRight, faTint,
 } from "@fortawesome/free-solid-svg-icons";
-  
+
+const drop =
+  <FontAwesomeIcon
+    icon={faTint}
+    size="1x"
+    color="#42C9FB"
+  />
 
 const cycle =
   <FontAwesomeIcon
     icon={faBiking}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const run =
   <FontAwesomeIcon
     icon={faRunning}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const swim =
   <FontAwesomeIcon
     icon={faSwimmer}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const walk =
 <FontAwesomeIcon
   icon={faWalking}
-  size="2x"
+  size="3x"
   color="#42C9FB"
+  className="exercise-icon"
 />
 const hike =
   <FontAwesomeIcon
     icon={faHiking}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const dumbbell =
   <FontAwesomeIcon
     icon={faDumbbell}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const stopwatch =
   <FontAwesomeIcon
     icon={faStopwatch20}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const dance =
   <FontAwesomeIcon
     icon={faMusic}
-    size="2x"
+    size="3x"
     color="#42C9FB"
+    className="exercise-icon"
   />
 
 const chevron =
@@ -71,27 +85,7 @@ const chevron =
     icon={faChevronCircleRight}
     size="2x"
     color="white"
-  />
-
-const UpArrow =
-  <FontAwesomeIcon
-    icon={faArrowUp}
-    size="2x"
-    color="#42C9FB"
-  />
-
-const DownArrow =
-  <FontAwesomeIcon
-    icon={faArrowDown}
-    size="2x"
-    color="#42C9FB"
-  />
-
-const Minus =
-  <FontAwesomeIcon
-    icon={faMinus}
-    size="2x"
-    color="#42C9FB"
+    className="chevron-icon"
   />
 
 
@@ -100,7 +94,7 @@ const Main = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #3A3A3A;
-  margin: 0 auto;
+  margin: 0px auto;
   width: 600px;
   box-shadow: 1px 1px 1px 1px #1C1C1D;
 
@@ -109,7 +103,7 @@ const Main = styled.div`
   }
 
   @media (max-width: 425px) {
-    margin: 20px auto;
+    margin: 5px auto;
     width: 325px;
   }
 
@@ -121,45 +115,16 @@ const Main = styled.div`
 
 const ListHeader = styled.div`
   display: flex;
-  align-items: flex-end;
+  justify-content: space-between;
+  width: 500px;
+  align-items: center;
 
   @media (max-width: 768px) {
-    width: 500px;
+    width: 450px;
   }
 
   @media (max-width: 425px) {
     flex-direction: column;
-    align-items: flex-start;
-    margin: 0 auto;
-  }
-`
-
-const ListTitleDiv = styled.div`
-  text-align: left;
-
-  @media (max-width: 768px) {
-    margin-left: 20px;
-    text-align: left;
-  }
-
-  @media (max-width: 425px) {
-    text-align: center;
-  }
-`
-
-const ListButtonDiv = styled.div`
-  margin-left: 360px;
-
-  @media (max-width: 768px) {
-    margin-left: 270px;
-  }
-
-  @media (max-width: 425px) {
-    margin-left: 26px;
-  }
-
-  @media (max-width: 320px) {
-    margin: 0 auto;
   }
 `
 
@@ -179,13 +144,12 @@ const AddButton = styled.button`
 
    @media (max-width: 425px) {
     width: 275px;
-    margin: 0 auto;
   }
 `
 
 const ListTitle = styled.h3`
   color: white;
-  font-size: 24px;
+  font-size: 36px;
 `
 
 const EntryCard = styled.div`
@@ -220,29 +184,55 @@ const EntryCard = styled.div`
 `
 
 const IconEntryCard = styled.div`
-  flex-grow: 1;
+  width: 125px;
   text-align: center;
 
   @media (max-width: 320px) {
     display: none;
   }
 `
+
+const DataTitleCard = styled.h3`
+  font-size: 24px;
+  margin-bottom: 0px;
+
+  @media (max-width: 425px) {
+    font-size: 20px;
+  }
+`
   
 const DataEntryCard = styled.div`
-  flex-grow: 2;
+  width: 275px;
+
+  @media (max-width: 320px) {
+    width: 295px;
+  }
+`
+
+const DataStatus = styled.p`
+  font-style: italic;
+  font-size: 18px;
+
+  @media (max-width: 425px) {
+    font-size: 16px;
+  }
+`
+
+const StatusEntryCard = styled.div`
+  flex-grow: 1;
 
   @media (max-width: 320px) {
     margin-left: 10px;
   }
 `
 
-const DataStatus = styled.p`
-  font-style: italic;
-`
-
 const ChevronEntryCard = styled.div`
-  flex-grow: 1;
+  width: 100px;
   cursor: pointer;
+
+  @media (max-width: 425px) {
+    width: 75px;
+  }
 `    
 
 const ListEntry = (props) => {
@@ -250,14 +240,14 @@ const ListEntry = (props) => {
   return (
     <Main>
       <ListHeader>
-        <ListTitleDiv>
+        <div>
           <ListTitle>Workouts</ListTitle>
-        </ListTitleDiv>
-        <ListButtonDiv>
+        </div>
+        <div>
           <Link to="/add">
             <AddButton>Add</AddButton>
           </Link>
-        </ListButtonDiv>
+        </div>
       </ListHeader>
       <div>
         {props.workouts.sort((a, b) => b.fields.date.localeCompare(a.fields.date))
@@ -281,8 +271,15 @@ const ListEntry = (props) => {
                       }
                     })()}  
                     <DataEntryCard>
-                      <h3>{entry.fields.exercise}</h3>
-                      <DataStatus>{entry.fields.status}</DataStatus>                        
+                      <DataTitleCard>{entry.fields.exercise}</DataTitleCard>                   
+                      {(() => {
+                        switch (entry.fields.status) {
+                          case "Not Challenging": return <DataStatus>{drop} {entry.fields.status}</DataStatus>;
+                          case "Still Challenging": return <DataStatus>{drop}{drop} {entry.fields.status}</DataStatus>;
+                          case "Too Challenging": return <DataStatus>{drop}{drop}{drop} {entry.fields.status}</DataStatus>;
+                          default: return <StatusEntryCard></StatusEntryCard>
+                        }
+                      })()}
                     </DataEntryCard>
                     <ChevronEntryCard>{chevron}</ChevronEntryCard>
                   </EntryCard>

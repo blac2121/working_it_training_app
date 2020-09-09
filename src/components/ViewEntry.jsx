@@ -28,7 +28,7 @@ const ViewContainer = styled.div`
   background-color: #3A3A3A;
   width: 500px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
   color: white;
   box-shadow: 1px 1px 1px 1px #1C1C1D;
 
@@ -82,7 +82,7 @@ const ViewData = styled.p`
 `
 
 const DeleteDiv = styled.div`
-  margin-top: 14px;
+  margin-top: 16px;
   margin-left: 10px;
   cursor: pointer;
 `
