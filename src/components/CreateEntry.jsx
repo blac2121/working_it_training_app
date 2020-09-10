@@ -218,6 +218,9 @@ const CreateEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
+
+  const [heartrate, setHeartRate] = useState(0)
+
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
   const history = useHistory();
@@ -258,9 +261,11 @@ const CreateEntry = (props) => {
       date,
       exercise,
       duration,
+      heartrate,
       status,
-      notes
+      notes,
     };    
+
 
     if (date === "" || exercise === "" || status === "") {
       alert("Please include a date, exercise, and status!")
@@ -288,6 +293,8 @@ const CreateEntry = (props) => {
 
   useEffect(() => { 
     calculateDuration();
+    const rate = parseInt(heartrate, 10);
+    setHeartRate(rate);
   })
 
 
@@ -365,6 +372,21 @@ const CreateEntry = (props) => {
             </div>
           </DurationInputs>  
         </Duration>
+        <div>
+          <div>
+            <label htmlFor="heartrate">Average Heart Rate</label>
+          </div>
+          <div>
+            <input
+              name="heartrate"
+              type="number"
+              min="0"
+              max="300"
+              value={heartrate}
+              onChange={(e) => setHeartRate(e.target.value)}
+            />             
+          </div>
+        </div>
         <StatusInput>
           <div>
             <label htmlFor="status">Status</label>
