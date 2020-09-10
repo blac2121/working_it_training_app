@@ -227,7 +227,7 @@ const EditEntry = (props) => {
   const [hours, setHours] = useState("");
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState("");
   const [heartrate, setHeartRate] = useState("");
   const [calories, setCalories] = useState("");
   const [status, setStatus] = useState("");
@@ -318,7 +318,7 @@ const EditEntry = (props) => {
     calculateDuration();
     setHeartRate(parseInt(heartrate, 10));
     setCalories(parseInt(calories, 10));
-  }, [])
+  })
 
   useEffect(() => {
     let work = props.workouts.find((x) => params.id === x.id);

@@ -162,9 +162,34 @@ const ViewLabels = styled.label`
   }
 `
 
+const ViewNoteLabel = styled.label`
+  font-size: 22px;
+  justify-self: left;
+  justify-content: start;
+
+  align-self: center;
+  padding-left: 10px;
+  align-self: flex-start;
+
+  @media (max-width: 425px) {
+    align-self: flex-start;
+  }
+`
+
 const ViewData = styled.p`
   color: #42C9FB;
   font-size: 20px;
+
+  @media (max-width: 425px) {
+    align-self: flex-start;
+    padding-left: 10px;
+  }
+`
+
+const ViewNoteData = styled.p`
+  color: #42C9FB;
+  font-size: 20px;
+  margin-top: 2px;
 
   @media (max-width: 425px) {
     align-self: flex-start;
@@ -301,10 +326,10 @@ const Entry = (props) => {
           : <ViewData>{workout.fields.calories} cal</ViewData>}
         <ViewLabels>Status:</ViewLabels>
         <ViewData>{workout.fields.status}</ViewData>
-        <ViewLabels>Notes:</ViewLabels>
+        <ViewNoteLabel>Notes:</ViewNoteLabel>
         {workout.fields.notes === undefined
           ? <NoInput>No notes listed</NoInput>
-          : <ViewData>{workout.fields.notes}</ViewData>}
+          : <ViewNoteData>{workout.fields.notes}</ViewNoteData>}
       </ViewDataContainer>
       <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
     </ViewContainer>
