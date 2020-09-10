@@ -112,6 +112,10 @@ const SecondsLabel = styled.label`
   }
 `
 
+const NumbersInput = styled.div`
+  margin-bottom: 20px;
+`
+
 const TimeInput = styled.input`
   width: 40px;
   height: 25px;
@@ -218,9 +222,8 @@ const CreateEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
-
-  const [heartrate, setHeartRate] = useState(0)
-
+  const [heartrate, setHeartRate] = useState(0);
+  const [calories, setCalories] = useState(0);
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
   const history = useHistory();
@@ -262,6 +265,7 @@ const CreateEntry = (props) => {
       exercise,
       duration,
       heartrate,
+      calories,
       status,
       notes,
     };    
@@ -293,8 +297,8 @@ const CreateEntry = (props) => {
 
   useEffect(() => { 
     calculateDuration();
-    const rate = parseInt(heartrate, 10);
-    setHeartRate(rate);
+    setHeartRate(parseInt(heartrate, 10));
+    setCalories(parseInt(calories, 10));
   })
 
 
@@ -372,21 +376,28 @@ const CreateEntry = (props) => {
             </div>
           </DurationInputs>  
         </Duration>
-        <div>
-          <div>
-            <label htmlFor="heartrate">Average Heart Rate</label>
-          </div>
-          <div>
-            <input
-              name="heartrate"
-              type="number"
-              min="0"
-              max="300"
-              value={heartrate}
-              onChange={(e) => setHeartRate(e.target.value)}
-            />             
-          </div>
-        </div>
+        <NumbersInput>
+          <HoursLabel htmlFor="heartrate">Average Heart Rate</HoursLabel>
+          <TimeInput
+            name="heartrate"
+            type="number"
+            min="0"
+            max="300"
+            value={heartrate}
+            onChange={(e) => setHeartRate(e.target.value)}
+          />             
+        </NumbersInput>
+        <NumbersInput>
+          <HoursLabel htmlFor="calories">Calories</HoursLabel>
+          <TimeInput
+            name="calories"
+            type="number"
+            min="0"
+            max="100000"
+            value={calories}
+            onChange={(e) => setCalories(e.target.value)}
+          />             
+        </NumbersInput>
         <StatusInput>
           <div>
             <label htmlFor="status">Status</label>

@@ -177,6 +177,14 @@ const Entry = (props) => {
           <ViewData>{formattedDuration}</ViewData>
         </ViewDataRows>
         <ViewDataRows>
+          <ViewLabels>Average Heart Rate:</ViewLabels>
+          <ViewData>{workout.fields.heartrate}</ViewData>
+        </ViewDataRows>
+        <ViewDataRows>
+          <ViewLabels>Calories:</ViewLabels>
+          <ViewData>{workout.fields.calories}</ViewData>
+        </ViewDataRows>
+        <ViewDataRows>
           <ViewLabels>Status:</ViewLabels>
           <ViewData>{workout.fields.status}</ViewData>
         </ViewDataRows>
