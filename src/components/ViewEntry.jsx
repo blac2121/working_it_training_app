@@ -69,6 +69,7 @@ const ViewDataContainer = styled.div`
 const ViewDataRows = styled.div`
   display: flex;
   align-items: center;
+  margin-botom: 8px;
 `
 
 const ViewLabels = styled.label`
