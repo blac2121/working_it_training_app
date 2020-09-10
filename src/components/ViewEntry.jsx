@@ -82,6 +82,13 @@ const ViewData = styled.p`
   padding-left: 10px;
 `
 
+const NoInput = styled.p`
+  color: #42C9FB;
+  font-size: 18px;
+  padding-left: 10px;
+  font-style: italic;
+`
+
 const DeleteDiv = styled.div`
   margin-top: 16px;
   margin-left: 10px;
@@ -175,15 +182,15 @@ const Entry = (props) => {
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Duration:</ViewLabels>
-          <ViewData>{formattedDuration}</ViewData>
+          {formattedDuration === "0:0:0" || formattedDuration === "" ? <NoInput>No duration listed</NoInput> : <ViewData>{formattedDuration}</ViewData>}
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Average Heart Rate:</ViewLabels>
-          <ViewData>{workout.fields.heartrate}</ViewData>
+          {workout.fields.heartrate === 0 || workout.fields.heartrate === "" ? <NoInput>No heart rate listed</NoInput> : <ViewData>{workout.fields.heartrate}</ViewData>}
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Calories:</ViewLabels>
-          <ViewData>{workout.fields.calories}</ViewData>
+          {workout.fields.calories === 0 || workout.fields.calories === "" ? <NoInput>No calories listed</NoInput> : <ViewData>{workout.fields.calories}</ViewData>}
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Status:</ViewLabels>
@@ -191,7 +198,7 @@ const Entry = (props) => {
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Notes:</ViewLabels>
-          <ViewData>{workout.fields.notes}</ViewData>
+          {workout.fields.notes > 1 ? <NoInput>No notes listed</NoInput> : <ViewData>{workout.fields.notes}</ViewData>}
         </ViewDataRows>
       </ViewDataContainer>
       <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>

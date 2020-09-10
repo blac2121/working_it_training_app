@@ -222,8 +222,8 @@ const CreateEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
-  const [heartrate, setHeartRate] = useState(0);
-  const [calories, setCalories] = useState(0);
+  const [heartrate, setHeartRate] = useState(null);
+  const [calories, setCalories] = useState(null);
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
   const history = useHistory();
