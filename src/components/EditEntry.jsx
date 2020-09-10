@@ -226,8 +226,8 @@ const EditEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
-  const [heartrate, setHeartRate] = useState(null);
-  const [calories, setCalories] = useState(null);
+  const [heartrate, setHeartRate] = useState("");
+  const [calories, setCalories] = useState("");
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
   const history = useHistory();

@@ -15,7 +15,6 @@ const Button = styled.button`
     background: #60ADCA;
   }
 
-
   @media (max-width: 425px) {
     width: 225px;
   }
