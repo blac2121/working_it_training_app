@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBiking, faRunning, faSwimmer, faWalking, 
   faHiking, faDumbbell, faStopwatch20, faMusic, 
-  faChevronCircleRight, faTint, faChevronRight,
+  faTint, faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const drop =
@@ -174,6 +174,7 @@ const EntryCard = styled.div`
 const IconEntryCard = styled.div`
   width: 125px;
   text-align: center;
+  
   @media (max-width: 320px) {
     display: none;
   }

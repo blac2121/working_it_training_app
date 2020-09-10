@@ -5,7 +5,11 @@ import axios from "axios";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBiking, faRunning, faSwimmer, faWalking, 
+  faHiking, faDumbbell, faStopwatch20, faMusic, 
+  faEdit, faTrashAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 
 const deleteTrash =
@@ -20,6 +24,70 @@ const editPencil =
     icon={faEdit}
     size="2x"
     color="#42C9FB"
+  />
+
+const cycle =
+  <FontAwesomeIcon
+    icon={faBiking}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
+  />
+
+const run =
+  <FontAwesomeIcon
+    icon={faRunning}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
+  />
+
+const swim =
+  <FontAwesomeIcon
+    icon={faSwimmer}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
+  />
+
+const walk =
+  <FontAwesomeIcon
+  icon={faWalking}
+  size="4x"
+  color="#42C9FB"
+  className="exercise-icon"
+  />
+
+const hike =
+  <FontAwesomeIcon
+    icon={faHiking}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
+  />
+
+const dumbbell =
+  <FontAwesomeIcon
+    icon={faDumbbell}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
+  />
+
+const stopwatch =
+  <FontAwesomeIcon
+    icon={faStopwatch20}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
+  />
+
+const dance =
+  <FontAwesomeIcon
+    icon={faMusic}
+    size="4x"
+    color="#42C9FB"
+    className="exercise-icon"
   />
 
 const ViewContainer = styled.div`
@@ -52,9 +120,20 @@ const ViewHeader = styled.div`
   justify-content: space-between;
 `
 
+const ViewTitleIcon = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const ViewIcon = styled.div`
+  text-align: left;
+`
+
 const ViewTitle = styled.h3`
   color: white;
-  font-size: 24px;
+  font-size: 32px;
+  text-align: left;
+  padding-left: 15px;
 `
 
 const ViewDataContainer = styled.div`
@@ -169,7 +248,23 @@ const Entry = (props) => {
   return (
     <ViewContainer>
       <ViewHeader>
-        <ViewTitle>{workout.fields.exercise}</ViewTitle>
+        <ViewTitleIcon>
+          {(() => {
+            switch (workout.fields.exercise) {
+              case "Cycle": return <ViewIcon>{cycle}</ViewIcon>;
+              case "Run": return <ViewIcon>{run}</ViewIcon>;
+              case "Swim": return <ViewIcon>{swim}</ViewIcon>;
+              case "Walk": return <ViewIcon>{walk}</ViewIcon>;
+              case "Hiking": return <ViewIcon>{hike}</ViewIcon>;
+              case "Strength Training": return <ViewIcon>{dumbbell}</ViewIcon>;                  
+              case "HIIT": return <ViewIcon>{stopwatch}</ViewIcon>;
+              case "Dance": return <ViewIcon>{dance}</ViewIcon>;
+              case "Other": return <ViewIcon>{stopwatch}</ViewIcon>;
+              default: return <ViewIcon>{stopwatch}</ViewIcon>
+            }
+          })()}  
+          <ViewTitle>{workout.fields.exercise}</ViewTitle>
+        </ViewTitleIcon>
         <Link to={`/edit/${workout.id}`}>
           <div>{editPencil}</div>
         </Link>
