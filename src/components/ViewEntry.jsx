@@ -208,6 +208,18 @@ const NoInput = styled.p`
   }
 `
 
+const NoNoteInput = styled.p`
+  color: #B0AFAF;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 3px;
+
+  @media (max-width: 425px) {
+    align-self: flex-start;
+    padding-left: 10px;
+  }
+`
+
 const DeleteDiv = styled.div`
   margin-top: 16px;
   margin-left: 10px;
@@ -328,7 +340,7 @@ const Entry = (props) => {
         <ViewData>{workout.fields.status}</ViewData>
         <ViewNoteLabel>Notes:</ViewNoteLabel>
         {workout.fields.notes === undefined
-          ? <NoInput>No notes listed</NoInput>
+          ? <NoNoteInput>No notes listed</NoNoteInput>
           : <ViewNoteData>{workout.fields.notes}</ViewNoteData>}
       </ViewDataContainer>
       <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
