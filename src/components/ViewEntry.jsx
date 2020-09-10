@@ -153,7 +153,6 @@ const ViewDataRows = styled.div`
 
 const ViewLabels = styled.label`
   font-size: 22px;
-  font-weight: bold;
 `
 
 const ViewData = styled.p`
