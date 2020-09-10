@@ -137,35 +137,29 @@ const ViewTitle = styled.h3`
 `
 
 const ViewDataContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 30% 70%;
   background-color: #4C4C4D;
   box-shadow: 1px 1px 1px 1px #282829;
   border-radius: 2px;
   padding: 15px;
 `
 
-const ViewDataRows = styled.div`
-  display: flex;
-  align-items: center;
-  margin-botom: 8px;
-`
-
 const ViewLabels = styled.label`
   font-size: 22px;
+  justify-self: left;
+  align-self: center;
+  padding-left: 10px;
 `
 
 const ViewData = styled.p`
   color: #42C9FB;
   font-size: 20px;
-  padding-left: 10px;
 `
 
 const NoInput = styled.p`
-  // color: #42C9FB;
   color: #B0AFAF;
   font-size: 18px;
-  padding-left: 10px;
   font-style: italic;
 `
 
@@ -271,38 +265,26 @@ const Entry = (props) => {
         </Link>
       </ViewHeader>      
       <ViewDataContainer>
-        <ViewDataRows>
-          <ViewLabels>Date:</ViewLabels>
-          <ViewData>{formattedDate}</ViewData>
-        </ViewDataRows>
-        <ViewDataRows>
-          <ViewLabels>Duration:</ViewLabels>
-          {formattedDuration === "0:0:0" || formattedDuration === ""
-            ? <NoInput>No duration listed</NoInput>
-            : <ViewData>{formattedDuration}</ViewData>}
-        </ViewDataRows>
-        <ViewDataRows>
-          <ViewLabels>Avg. Heart Rate:</ViewLabels>
-          {workout.fields.heartrate === 0 || workout.fields.heartrate === undefined
-            ? <NoInput>No heart rate listed</NoInput>
-            : <ViewData>{workout.fields.heartrate} <small>BPM</small></ViewData>}
-        </ViewDataRows>
-        <ViewDataRows>
-          <ViewLabels>Calories:</ViewLabels>
-          {workout.fields.calories === 0 || workout.fields.calories === undefined
-            ? <NoInput>No calories listed</NoInput>
-            : <ViewData>{workout.fields.calories} cal</ViewData>}
-        </ViewDataRows>
-        <ViewDataRows>
-          <ViewLabels>Status:</ViewLabels>
-          <ViewData>{workout.fields.status}</ViewData>
-        </ViewDataRows>
-        <ViewDataRows>
-          <ViewLabels>Notes:</ViewLabels>
-          {workout.fields.notes === undefined
-            ? <NoInput>No notes listed</NoInput>
-            : <ViewData>{workout.fields.notes}</ViewData>}
-        </ViewDataRows>
+        <ViewLabels>Date:</ViewLabels>
+        <ViewData>{formattedDate}</ViewData>
+        <ViewLabels>Duration:</ViewLabels>
+        {formattedDuration === "0:0:0" || formattedDuration === ""
+          ? <NoInput>No duration listed</NoInput>
+          : <ViewData>{formattedDuration}</ViewData>}
+        <ViewLabels>Heart Rate:</ViewLabels>
+        {workout.fields.heartrate === 0 || workout.fields.heartrate === undefined
+          ? <NoInput>No heart rate listed</NoInput>
+          : <ViewData>{workout.fields.heartrate} <small>BPM</small></ViewData>}
+        <ViewLabels>Calories:</ViewLabels>
+        {workout.fields.calories === 0 || workout.fields.calories === undefined
+          ? <NoInput>No calories listed</NoInput>
+          : <ViewData>{workout.fields.calories} cal</ViewData>}
+        <ViewLabels>Status:</ViewLabels>
+        <ViewData>{workout.fields.status}</ViewData>
+        <ViewLabels>Notes:</ViewLabels>
+        {workout.fields.notes === undefined
+          ? <NoInput>No notes listed</NoInput>
+          : <ViewData>{workout.fields.notes}</ViewData>}
       </ViewDataContainer>
       <DeleteDiv onClick={handleDelete}>{deleteTrash}</DeleteDiv>
     </ViewContainer>

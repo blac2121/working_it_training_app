@@ -30,16 +30,6 @@ const NavIcon = styled.div`
 const NavHeading = styled.div`
   display: flex;
   flex-direction: column;
-
-// @media (max-width: 768px) {
-//   margin-left: 24px;
-//   margin-bottom: 30px;
-// }
-
-// @media (max-width: 425px) {
-//   background-color: red;
-//   width: 100%;
-// }
 `
 const NavTitle = styled.h1`
   color: white;

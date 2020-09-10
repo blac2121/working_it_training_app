@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
+
 import axios from "axios";
+
 import NavBar from "./components/NavBar";
 import ListEntry from "./components/ListEntry";
 import ViewEntry from "./components/ViewEntry";
