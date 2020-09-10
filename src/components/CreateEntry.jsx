@@ -230,12 +230,10 @@ const CreateEntry = (props) => {
   const [calories, setCalories] = useState("");
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
-  const history = useHistory();
-
   const [dateIsValid, setDateIsValid] = useState(true);
   const [exerciseIsValid, setExerciseIsValid] = useState(true);
   const [statusIsValid, setStatusIsValid] = useState(true);
-
+  const history = useHistory();
 
  // Sets and Processes Exercise Drop Down
   const exerciseOptions = [
@@ -270,7 +268,6 @@ const CreateEntry = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-
     const fields = {
       date,
       exercise,
