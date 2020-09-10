@@ -179,11 +179,6 @@ const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-between;
 
-  // @media (max-width: 768px) {
-  //   width: 440px;
-  //    align-items: center;
-  // }
-
   @media (max-width: 425px) {
     flex-direction: column;
     width: 220px;
