@@ -10,8 +10,8 @@ import SubmitButton from "./SubmitButton";
 const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #3A3A3A;
-  width: 500px;
+  background-color: #4C4C4D;
+  width: 475px;
   margin: 30px auto;
   padding: 20px;
   color: white;
@@ -36,18 +36,19 @@ const AddHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  padding-left: 25px;
 `
 
 const AddTitle = styled.h3`
   color: white;
-  font-size: 24px;
+  font-size: 32px;
 `
 
 const AddForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 20px 25px 25px 25px;
+  padding: 15px 25px 25px 25px;
+  width: 415px;
 `
 
 const InvalidInput = styled.p`
@@ -56,21 +57,23 @@ const InvalidInput = styled.p`
 
 const DateInput = styled.div`
   margin-bottom: 20px;
+  width: 415px;
 `
 
 const DateField = styled.input`
   border-radius: 2px;
   border: 1px solid white;
   height: 35px;
-  width: 200px;
+  width: 100%;
   font-family: 'Titillium Web';
   padding-left: 10px;
   padding-right: 10px;
+  box-sizing: border-box;
 `
 
 const ExerciseInput = styled.div`
   margin-bottom: 20px;
-  width: 275px;
+  width: 100%;
 
   @media (max-width: 768px) {
     width: 440px;
@@ -147,7 +150,7 @@ const DurationInputs = styled.div`
 
 const StatusInput = styled.div`
   margin-bottom: 20px;
-  width: 275px;
+  width: 100%;
 
   @media (max-width: 768px) {
     width: 440px;
@@ -160,7 +163,7 @@ const StatusInput = styled.div`
 
 const NotesInput = styled.div`
   margin-bottom: 20px;
-  width: 275px;
+  width: 100%;
 `
 
 const NotesField = styled.textarea`
@@ -392,7 +395,7 @@ const CreateEntry = (props) => {
           </DurationInputs>  
         </Duration>
         <NumbersInput>
-          <HoursLabel htmlFor="heartrate">Average Heart Rate</HoursLabel>
+          <HoursLabel htmlFor="heartrate">Avg Heart Rate</HoursLabel>
           <TimeInput
             name="heartrate"
             type="number"

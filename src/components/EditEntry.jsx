@@ -11,11 +11,11 @@ const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #4C4C4D;
-  width: 500px;
+  width: 475px;
   margin: 30px auto;
   padding: 20px;
   color: white;
-  box-shadow: 1px 1px 1px 1px #282829;
+  box-shadow: 1px 1px 1px 1px #1C1C1D;
 
   @media (max-width: 768px) {
     margin: 20px auto;
@@ -36,18 +36,19 @@ const AddHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  padding-left: 25px;
 `
 
 const AddTitle = styled.h3`
   color: white;
-  font-size: 24px;
+  font-size: 32px;
 `
 
 const AddForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 5px 25px 25px 25px;
+  width: 415px;
 `
 
 const InvalidInput = styled.p`
@@ -56,21 +57,23 @@ const InvalidInput = styled.p`
 
 const DateInput = styled.div`
   margin-bottom: 20px;
+  width: 415px;
 `
 
 const DateField = styled.input`
   border-radius: 2px;
   border: 1px solid white;
   height: 35px;
-  width: 200px;
+  width: 100%;
   font-family: 'Titillium Web';
   padding-left: 10px;
   padding-right: 10px;
+  box-sizing: border-box;
 `
 
 const ExerciseInput = styled.div`
   margin-bottom: 20px;
-  width: 275px;
+  width: 100%;
 
   @media (max-width: 768px) {
     width: 440px;
@@ -160,7 +163,7 @@ const StatusInput = styled.div`
 
 const NotesInput = styled.div`
   margin-bottom: 20px;
-  width: 275px;
+  width: 100%;
 `
 
 const NotesField = styled.textarea`
@@ -178,11 +181,6 @@ const NotesField = styled.textarea`
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-between;
-
-  @media (max-width: 768px) {
-    width: 440px;
-    align-items: center;
-  }
 
   @media (max-width: 425px) {
     flex-direction: column;
@@ -229,7 +227,7 @@ const EditEntry = (props) => {
   const [hours, setHours] = useState("");
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState("");
   const [heartrate, setHeartRate] = useState("");
   const [calories, setCalories] = useState("");
   const [status, setStatus] = useState("");
@@ -320,7 +318,7 @@ const EditEntry = (props) => {
     calculateDuration();
     setHeartRate(parseInt(heartrate, 10));
     setCalories(parseInt(calories, 10));
-  }, [])
+  })
 
   useEffect(() => {
     let work = props.workouts.find((x) => params.id === x.id);

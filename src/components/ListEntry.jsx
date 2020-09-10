@@ -212,7 +212,11 @@ const DataTitleCard = styled.h3`
     padding-left: 30px;
   }
 `
-  
+
+// const DataStatusContainter = styled.div`
+//   padding-left: 10px;
+// `
+
 const DataStatus = styled.p`
   font-style: italic;
   font-size: 18px;
