@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBiking, faRunning, faSwimmer, faWalking, 
-  faHiking, faDumbbell, faStopwatch20, faMusic, 
+  faHiking, faDumbbell, faStopwatch20, faShoePrints, 
   faTint, faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -74,7 +74,7 @@ const stopwatch =
 
 const dance =
   <FontAwesomeIcon
-    icon={faMusic}
+    icon={faShoePrints}
     size="4x"
     color="#42C9FB"
     className="exercise-icon"
@@ -174,7 +174,7 @@ const EntryCard = styled.div`
 const IconEntryCard = styled.div`
   width: 125px;
   text-align: center;
-  
+
   @media (max-width: 320px) {
     display: none;
   }
