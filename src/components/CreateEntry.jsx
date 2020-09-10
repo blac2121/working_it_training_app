@@ -50,6 +50,10 @@ const AddForm = styled.form`
   padding: 20px 25px 25px 25px;
 `
 
+const InvalidInput = styled.p`
+  color: #42C9FB;
+`
+
 const DateInput = styled.div`
   margin-bottom: 20px;
 `
@@ -222,10 +226,13 @@ const CreateEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
-  const [heartrate, setHeartRate] = useState(null);
-  const [calories, setCalories] = useState(null);
+  const [heartrate, setHeartRate] = useState("");
+  const [calories, setCalories] = useState("");
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
+  const [dateIsValid, setDateIsValid] = useState(true);
+  const [exerciseIsValid, setExerciseIsValid] = useState(true);
+  const [statusIsValid, setStatusIsValid] = useState(true);
   const history = useHistory();
 
  // Sets and Processes Exercise Drop Down
@@ -257,9 +264,10 @@ const CreateEntry = (props) => {
     key === "value" && setStatus(status[key])
   }
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const fields = {
       date,
       exercise,
@@ -269,12 +277,22 @@ const CreateEntry = (props) => {
       status,
       notes,
     };    
+    
 
-
-    if (date === "" || exercise === "" || status === "") {
-      alert("Please include a date, exercise, and status!")
-    } else {
-
+    if (date === "") {
+      setDateIsValid(false);
+    }
+    
+    if (exercise === "") {
+      setExerciseIsValid(false);
+    }
+        
+    if (status === "") {
+      setStatusIsValid(false);
+    }
+    
+    else {
+      
       const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts`;
       await axios.post(airtableURL, { fields }, {
         headers: {
@@ -318,7 +336,8 @@ const CreateEntry = (props) => {
               name="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-            />                       
+            />       
+            {dateIsValid ? null : <InvalidInput>Date required</InvalidInput> }
           </div>
         </DateInput>
         <ExerciseInput>
@@ -333,7 +352,8 @@ const CreateEntry = (props) => {
               defaultValue={exercise}
               options={exerciseOptions}
               onChange={setExercise}
-            />                      
+            />  
+            {exerciseIsValid ? null : <InvalidInput>Exercise required</InvalidInput>}
           </div>
         </ExerciseInput>
         <Duration>
@@ -410,7 +430,8 @@ const CreateEntry = (props) => {
               defaultValue={status}
               options={statusOptions}        
               onChange={setStatus}
-            />              
+            />     
+            {statusIsValid ? null : <InvalidInput>Status required</InvalidInput>}
           </div>
         </StatusInput>
         <NotesInput>

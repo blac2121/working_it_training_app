@@ -152,17 +152,18 @@ const ViewDataRows = styled.div`
 `
 
 const ViewLabels = styled.label`
-  font-size: 18px;
+  font-size: 22px;
 `
 
 const ViewData = styled.p`
   color: #42C9FB;
-  font-size: 18px;
+  font-size: 20px;
   padding-left: 10px;
 `
 
 const NoInput = styled.p`
-  color: #42C9FB;
+  // color: #42C9FB;
+  color: #B0AFAF;
   font-size: 18px;
   padding-left: 10px;
   font-style: italic;
@@ -281,14 +282,14 @@ const Entry = (props) => {
             : <ViewData>{formattedDuration}</ViewData>}
         </ViewDataRows>
         <ViewDataRows>
-          <ViewLabels>Average Heart Rate:</ViewLabels>
-          {workout.fields.heartrate === 0 || workout.fields.heartrate === ""
+          <ViewLabels>Avg. Heart Rate:</ViewLabels>
+          {workout.fields.heartrate === 0 || workout.fields.heartrate === undefined
             ? <NoInput>No heart rate listed</NoInput>
             : <ViewData>{workout.fields.heartrate} <small>BPM</small></ViewData>}
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Calories:</ViewLabels>
-          {workout.fields.calories === 0 || workout.fields.calories === ""
+          {workout.fields.calories === 0 || workout.fields.calories === undefined
             ? <NoInput>No calories listed</NoInput>
             : <ViewData>{workout.fields.calories} cal</ViewData>}
         </ViewDataRows>
@@ -298,7 +299,7 @@ const Entry = (props) => {
         </ViewDataRows>
         <ViewDataRows>
           <ViewLabels>Notes:</ViewLabels>
-          {workout.fields.notes > 1
+          {workout.fields.notes === undefined
             ? <NoInput>No notes listed</NoInput>
             : <ViewData>{workout.fields.notes}</ViewData>}
         </ViewDataRows>

@@ -183,13 +183,19 @@ const IconEntryCard = styled.div`
 const DataTitleCard = styled.h3`
   font-size: 24px;
   margin-bottom: 0px;
+
   @media (max-width: 425px) {
     font-size: 20px;
+  }
+
+  @media (max-width: 320px) {
+    padding-left: 30px;
   }
 `
   
 const DataEntryCard = styled.div`
   width: 275px;
+
   @media (max-width: 320px) {
     width: 295px;
   }
@@ -198,8 +204,13 @@ const DataEntryCard = styled.div`
 const DataStatus = styled.p`
   font-style: italic;
   font-size: 18px;
+
   @media (max-width: 425px) {
     font-size: 16px;
+  }
+
+  @media (max-width: 320px) {
+    padding-left: 30px;
   }
 `
 

@@ -50,6 +50,10 @@ const AddForm = styled.form`
   padding: 5px 25px 25px 25px;
 `
 
+const InvalidInput = styled.p`
+  color: #42C9FB;
+`
+
 const DateInput = styled.div`
   margin-bottom: 20px;
 `
@@ -226,10 +230,13 @@ const EditEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
-  const [heartrate, setHeartRate] = useState(null);
-  const [calories, setCalories] = useState(null);
+  const [heartrate, setHeartRate] = useState("");
+  const [calories, setCalories] = useState("");
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
+  const [dateIsValid, setDateIsValid] = useState(true);
+  const [exerciseIsValid, setExerciseIsValid] = useState(true);
+  const [statusIsValid, setStatusIsValid] = useState(true);
   const history = useHistory();
   
 
@@ -261,6 +268,7 @@ const EditEntry = (props) => {
     key === "value" && setStatus(status[key])
   }
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -274,13 +282,19 @@ const EditEntry = (props) => {
       notes
     };    
 
-    if (date === "" && exercise === "") {
-      alert("Please enter a date and exercise!")
-    } else if (date === "" && exercise !== "") {
-      alert("Please enter a date!")
-    } else if (date !== "" && exercise === "") {
-      alert("Please enter an exercise!")
-    } else { 
+    if (date === "") {
+      setDateIsValid(false);
+    }
+    
+    if (exercise === "") {
+      setExerciseIsValid(false);
+    }
+        
+    if (status === "") {
+      setStatusIsValid(false);
+    }
+    
+    else { 
       
       const airtableURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE}/workouts/${workout.id}`;
       await axios.put(airtableURL, { fields }, {
@@ -302,12 +316,11 @@ const EditEntry = (props) => {
     setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
   }
 
-
   useEffect(() => { 
     calculateDuration();
     setHeartRate(parseInt(heartrate, 10));
     setCalories(parseInt(calories, 10));
-  })
+  }, [])
 
   useEffect(() => {
     let work = props.workouts.find((x) => params.id === x.id);
@@ -350,7 +363,8 @@ const EditEntry = (props) => {
               name="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-            />                       
+            />   
+            {dateIsValid ? null : <InvalidInput>Date required</InvalidInput> }
           </div>
         </DateInput>
         <ExerciseInput>
@@ -366,7 +380,8 @@ const EditEntry = (props) => {
               placeholder={exercise}
               options={exerciseOptions}        
               onChange={setExercise}
-            />                      
+            />  
+            {exerciseIsValid ? null : <InvalidInput>Exercise required</InvalidInput>}            
           </div>
         </ExerciseInput>
         <Duration>
@@ -445,6 +460,7 @@ const EditEntry = (props) => {
               options={statusOptions}        
               onChange={setStatus}
             />              
+            {statusIsValid ? null : <InvalidInput>Status required</InvalidInput>}
           </div>
         </StatusInput>
         <NotesInput>
