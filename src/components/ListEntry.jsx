@@ -6,8 +6,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBiking, faRunning, faSwimmer, faWalking, 
-  faHiking, faDumbbell, faStopwatch20, faMusic, 
-  faChevronCircleRight, faTint,
+  faHiking, faDumbbell, faStopwatch20, faShoePrints, 
+  faTint, faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const drop =
@@ -20,7 +20,7 @@ const drop =
 const cycle =
   <FontAwesomeIcon
     icon={faBiking}
-    size="3x"
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
@@ -28,7 +28,7 @@ const cycle =
 const run =
   <FontAwesomeIcon
     icon={faRunning}
-    size="3x"
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
@@ -36,7 +36,7 @@ const run =
 const swim =
   <FontAwesomeIcon
     icon={faSwimmer}
-    size="3x"
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
@@ -44,14 +44,14 @@ const swim =
 const walk =
 <FontAwesomeIcon
   icon={faWalking}
-  size="3x"
+  size="4x"
   color="#42C9FB"
   className="exercise-icon"
 />
 const hike =
   <FontAwesomeIcon
     icon={faHiking}
-    size="3x"
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
@@ -59,7 +59,7 @@ const hike =
 const dumbbell =
   <FontAwesomeIcon
     icon={faDumbbell}
-    size="3x"
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
@@ -67,27 +67,26 @@ const dumbbell =
 const stopwatch =
   <FontAwesomeIcon
     icon={faStopwatch20}
-    size="3x"
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
 
 const dance =
   <FontAwesomeIcon
-    icon={faMusic}
-    size="3x"
+    icon={faShoePrints}
+    size="4x"
     color="#42C9FB"
     className="exercise-icon"
   />
 
 const chevron =
   <FontAwesomeIcon
-    icon={faChevronCircleRight}
+    icon={faChevronRight}
     size="2x"
     color="white"
     className="chevron-icon"
   />
-
 
 const Main = styled.div`
   display: flex;
@@ -175,6 +174,7 @@ const EntryCard = styled.div`
 const IconEntryCard = styled.div`
   width: 125px;
   text-align: center;
+
   @media (max-width: 320px) {
     display: none;
   }

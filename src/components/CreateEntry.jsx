@@ -112,6 +112,10 @@ const SecondsLabel = styled.label`
   }
 `
 
+const NumbersInput = styled.div`
+  margin-bottom: 20px;
+`
+
 const TimeInput = styled.input`
   width: 40px;
   height: 25px;
@@ -217,9 +221,11 @@ const CreateEntry = (props) => {
   const [hours, setHours] = useState("");
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
-  const [duration, setDuration] = useState(0)
-  const [status, setStatus] = useState("")
-  const [notes, setNotes] = useState("")
+  const [duration, setDuration] = useState(0);
+  const [heartrate, setHeartRate] = useState(null);
+  const [calories, setCalories] = useState(null);
+  const [status, setStatus] = useState("");
+  const [notes, setNotes] = useState("");
   const history = useHistory();
 
  // Sets and Processes Exercise Drop Down
@@ -258,9 +264,12 @@ const CreateEntry = (props) => {
       date,
       exercise,
       duration,
+      heartrate,
+      calories,
       status,
-      notes
+      notes,
     };    
+
 
     if (date === "" || exercise === "" || status === "") {
       alert("Please include a date, exercise, and status!")
@@ -288,6 +297,8 @@ const CreateEntry = (props) => {
 
   useEffect(() => { 
     calculateDuration();
+    setHeartRate(parseInt(heartrate, 10));
+    setCalories(parseInt(calories, 10));
   })
 
 
@@ -365,6 +376,28 @@ const CreateEntry = (props) => {
             </div>
           </DurationInputs>  
         </Duration>
+        <NumbersInput>
+          <HoursLabel htmlFor="heartrate">Average Heart Rate</HoursLabel>
+          <TimeInput
+            name="heartrate"
+            type="number"
+            min="0"
+            max="300"
+            value={heartrate}
+            onChange={(e) => setHeartRate(e.target.value)}
+          />             
+        </NumbersInput>
+        <NumbersInput>
+          <HoursLabel htmlFor="calories">Calories</HoursLabel>
+          <TimeInput
+            name="calories"
+            type="number"
+            min="0"
+            max="100000"
+            value={calories}
+            onChange={(e) => setCalories(e.target.value)}
+          />             
+        </NumbersInput>
         <StatusInput>
           <div>
             <label htmlFor="status">Status</label>
