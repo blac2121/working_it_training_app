@@ -102,15 +102,10 @@ const ViewContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 500px;
-    margin: 0 auto;
   }
 
   @media (max-width: 425px) {
     width: 275px;
-  }
-
-  @media (max-width: 320px) {
-    margin-left: 20px;
   }
 `
 
@@ -143,6 +138,17 @@ const ViewDataContainer = styled.div`
   box-shadow: 1px 1px 1px 1px #282829;
   border-radius: 2px;
   padding: 15px;
+
+  @media (max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 320px) {
+    display: flex;
+    flex-direction: column;
+  }
+
 `
 
 const ViewLabels = styled.label`
@@ -150,17 +156,31 @@ const ViewLabels = styled.label`
   justify-self: left;
   align-self: center;
   padding-left: 10px;
+
+  @media (max-width: 425px) {
+    align-self: flex-start;
+  }
 `
 
 const ViewData = styled.p`
   color: #42C9FB;
   font-size: 20px;
+
+  @media (max-width: 425px) {
+    align-self: flex-start;
+    padding-left: 10px;
+  }
 `
 
 const NoInput = styled.p`
   color: #B0AFAF;
   font-size: 18px;
   font-style: italic;
+
+  @media (max-width: 425px) {
+    align-self: flex-start;
+    padding-left: 10px;
+  }
 `
 
 const DeleteDiv = styled.div`
