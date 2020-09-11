@@ -318,19 +318,15 @@ const EditEntry = (props) => {
     history.push(`/exercise/${workout.id}`)
   }
 
-  const calculateDuration = () => {
-    setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
-  }
-
   useEffect(() => { 
-    calculateDuration();
-  }, [calculateDuration])
+    setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
+  }, [hours, minutes, seconds])
 
 
   useEffect(() => {
     let work = props.workouts.find((x) => params.id === x.id);
     setWorkout(work)
-  }, []) 
+  }, [props.workouts, params.id]) 
 
   useEffect(() => {
     if (workout) {
@@ -430,7 +426,7 @@ const EditEntry = (props) => {
           </DurationInputs>  
         </Duration>
         <NumbersInput>
-          <HoursLabel htmlFor="heartrate">Average Heart Rate</HoursLabel>
+          <HoursLabel htmlFor="heartrate">Heart Rate</HoursLabel>
           <TimeInput
             name="heartrate"
             type="number"

@@ -315,14 +315,9 @@ const CreateEntry = (props) => {
     history.push("/")
   }
 
-  const calculateDuration = () => {
-    setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
-  }
-
   useEffect(() => { 
-    calculateDuration();
-  }, [calculateDuration])
-
+    setDuration((hours * 3600) + (minutes * 60) + (seconds * 1))
+  }, [hours, minutes, seconds])
 
   return (
     <AddContainer>
@@ -401,7 +396,7 @@ const CreateEntry = (props) => {
           </DurationInputs>  
         </Duration>
         <NumbersInput>
-          <HoursLabel htmlFor="heartrate">Avg Heart Rate</HoursLabel>
+          <HoursLabel htmlFor="heartrate">Heart Rate</HoursLabel>
           <TimeInput
             name="heartrate"
             type="number"
