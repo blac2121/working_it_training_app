@@ -5,7 +5,7 @@ import styled from "styled-components";
 const FooterAttribution = styled.h6`
   color: white;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   width: 100%;
 `
 
