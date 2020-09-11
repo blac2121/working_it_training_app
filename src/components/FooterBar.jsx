@@ -12,7 +12,7 @@ const FooterAttribution = styled.h6`
 const FooterBar = () => {
 
   return (
-    <FooterAttribution>Working It: Training in Your Hands created by BL</FooterAttribution>
+    <FooterAttribution>Working It: Training in Your Hands designed and handcrafted in small batches by BL</FooterAttribution>
   )
 }
 
