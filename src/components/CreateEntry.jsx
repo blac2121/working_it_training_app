@@ -69,6 +69,14 @@ const DateField = styled.input`
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 440px;
+  }
+
+  @media (max-width: 425px) {
+    width: 225px;
+  }
 `
 
 const ExerciseInput = styled.div`
