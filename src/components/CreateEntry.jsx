@@ -315,7 +315,7 @@ const CreateEntry = (props) => {
     calculateDuration();
     setHeartRate(parseInt(heartrate, 10));
     setCalories(parseInt(calories, 10));
-  })
+  }, [calculateDuration, heartrate, calories])
 
 
   return (
@@ -448,7 +448,7 @@ const CreateEntry = (props) => {
         </NotesInput>
         <ButtonDiv>
           <Cancel onClick={handleCancel}>Cancel</Cancel>
-          <SubmitButton label="Add" handleClick="onSubmit"></SubmitButton>
+          <SubmitButton label="Save" onClick={props.onSubmit}></SubmitButton>
         </ButtonDiv>
       </AddForm>  
     </AddContainer>  
