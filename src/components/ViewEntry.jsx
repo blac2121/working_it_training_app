@@ -275,7 +275,7 @@ const Entry = (props) => {
     )
   }
 
-  const dateInput = new Date(workout.fields.date.replace(/-/g, "/\/"))
+  const dateInput = new Date(workout.fields.date.replace(/-/g, "/" ))
   const formattedDate = dateInput.toDateString()
 
   const durationInput = workout.fields.duration
