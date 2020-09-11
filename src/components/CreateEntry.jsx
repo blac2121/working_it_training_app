@@ -253,7 +253,7 @@ const CreateEntry = (props) => {
 
   // Sets and Processes Status Drop Down
   const statusOptions = [
-    { value: "Not Challenging", label: "Ready for a Challenge" },
+    { value: "Not Challenging", label: "Not Challenging" },
     { value: "Still Challenging", label: "Still Challenging" },
     { value: "Too Challenging", label: "Too Challenging" },
   ];
