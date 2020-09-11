@@ -224,8 +224,8 @@ const CreateEntry = (props) => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
   const [duration, setDuration] = useState(0);
-  const [heartrate, setHeartRate] = useState("");
-  const [calories, setCalories] = useState("");
+  const [heartrate, setHeartRate] = useState(undefined);
+  const [calories, setCalories] = useState(undefined);
   const [status, setStatus] = useState("");
   const [notes, setNotes] = useState("");
   const [dateIsValid, setDateIsValid] = useState(true);
@@ -400,7 +400,7 @@ const CreateEntry = (props) => {
             min="0"
             max="300"
             value={heartrate}
-            onChange={(e) => setHeartRate(parseInt(e.target.value))}
+            onChange={(e) => setHeartRate(parseInt(e.target.value || 0))}
           />             
         </NumbersInput>
         <NumbersInput>
@@ -411,7 +411,7 @@ const CreateEntry = (props) => {
             min="0"
             max="100000"
             value={calories}
-            onChange={(e) => setCalories(parseInt(e.target.value))}
+            onChange={(e) => setCalories(parseInt(e.target.value || 0))}
           />             
         </NumbersInput>
         <StatusInput>
