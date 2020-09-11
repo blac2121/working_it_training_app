@@ -313,9 +313,7 @@ const CreateEntry = (props) => {
 
   useEffect(() => { 
     calculateDuration();
-    setHeartRate(parseInt(heartrate, 10));
-    setCalories(parseInt(calories, 10));
-  }, [calculateDuration, heartrate, calories])
+  }, [calculateDuration])
 
 
   return (
@@ -402,7 +400,7 @@ const CreateEntry = (props) => {
             min="0"
             max="300"
             value={heartrate}
-            onChange={(e) => setHeartRate(e.target.value)}
+            onChange={(e) => setHeartRate(parseInt(e.target.value))}
           />             
         </NumbersInput>
         <NumbersInput>
@@ -413,7 +411,7 @@ const CreateEntry = (props) => {
             min="0"
             max="100000"
             value={calories}
-            onChange={(e) => setCalories(e.target.value)}
+            onChange={(e) => setCalories(parseInt(e.target.value))}
           />             
         </NumbersInput>
         <StatusInput>
