@@ -316,10 +316,8 @@ const EditEntry = (props) => {
 
   useEffect(() => { 
     calculateDuration();
+  }, [calculateDuration])
 
-    setHeartRate(parseInt(heartrate, 10));
-    setCalories(parseInt(calories, 10));
-  }, [calculateDuration, heartrate, calories])
 
   useEffect(() => {
     let work = props.workouts.find((x) => params.id === x.id);
@@ -431,7 +429,7 @@ const EditEntry = (props) => {
             min="0"
             max="300"
             value={heartrate}
-            onChange={(e) => setHeartRate(e.target.value)}
+            onChange={(e) => setHeartRate(parseInt(e.target.value))}
           />             
         </NumbersInput>
         <NumbersInput>
@@ -442,7 +440,7 @@ const EditEntry = (props) => {
             min="0"
             max="100000"
             value={calories}
-            onChange={(e) => setCalories(e.target.value)}
+            onChange={(e) => setCalories(parseInt(e.target.value))}
           />             
         </NumbersInput>
         <StatusInput>
