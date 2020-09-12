@@ -213,10 +213,6 @@ const DataTitleCard = styled.h3`
   }
 `
 
-// const DataStatusContainter = styled.div`
-//   padding-left: 10px;
-// `
-
 const DataStatus = styled.p`
   font-style: italic;
   font-size: 18px;
